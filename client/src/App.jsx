@@ -8,6 +8,7 @@ import LandingPage from './Pages/LandingPage';
 import UpdateProfile from './Pages/UpdateProfile';
 import Representative from './Pages/Representative';
 import MenuBar from './Components/MenuBar';
+import Events from './Pages/Events';
 
 class App extends Component {
   constructor(props) {
@@ -77,7 +78,8 @@ class App extends Component {
         <LandingPage liftToken={this.liftTokenToState} />
         <UpdateProfile />
         <Representative />
-        <MenuBar />
+        <Events />
+        {/* <MenuBar /> */}
       </>
     );
 
