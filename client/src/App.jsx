@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import Signup from './Components/Signup';
-import Login from './Components/Login';
+// import Signup from './Components/Signup';
+// import Login from './Components/Login';
 import UserProfile from './Components/UserProfile';
+// import LandingPage from './Pages/LandingPage';
+// import UpdateProfile from './Pages/UpdateProfile';
+import Representative from './Pages/Representative';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       token: '',
-      user: null,
+      user: true,
       errorMessage: '',
       lockedResult: ''
     };
@@ -69,35 +72,20 @@ class App extends Component {
   render() {
     let user = this.state.user;
     let contents = (
-      <>
-        <Signup liftToken={this.liftTokenToState} />
-        <Login liftToken={this.liftTokenToState} />
-        <button onClick={this.handleClick}>
-          Test the protected route
-        </button>
-        <p>{this.state.lockedResult}</p>
-      </>
+      // <LandingPage liftToken={this.liftTokenToState} />
+      // <UpdateProfile />
+      <Representative />
     );
 
     if (user) {
       contents = (
         <>
           <UserProfile user={user} logout={this.logout} />
-          <button onClick={this.handleClick}>
-            Test the protected route
-          </button>
-          <p>{this.state.lockedResult}</p>
         </>
       );
     }
 
-    return (
-      <div className='App'>
-        <h1>JWT BOILERPLATE</h1>
-        <p>{this.state.message}</p>
-        {contents}
-      </div>
-    );
+    return <div className='App'>{contents}</div>;
   }
 }
 

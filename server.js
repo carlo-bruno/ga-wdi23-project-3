@@ -26,7 +26,7 @@ const signupLimiter = new RateLimit({
   message: 'Maximum accounts created. Please try again later'
 });
 
-mongoose.connect('mongodb://localhost/jwt', {
+mongoose.connect('mongodb://localhost/project3', {
   useNewUrlParser: true
 });
 const db = mongoose.connection;
