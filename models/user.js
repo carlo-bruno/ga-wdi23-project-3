@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
 
+
 const userSchema = new Schema({
+  
   name: {
     type: String,
     required: [true, 'You must enter a name'],
@@ -20,6 +22,33 @@ const userSchema = new Schema({
     required: [true, 'You must enter an email'],
     minlength: [5, 'Email must be between 5 and 99 characters'],
     maxlength: [99, 'Email must be between 5 and 99 characters']
+  },
+  city: {
+    type: String,
+    required: [false],
+    minlength: [3 ],
+    maxlength: [99]
+  },
+  state: {
+    type: String,
+    required: [false],
+    minlength: [2, 'Please enter in two characters'],
+    maxlength: [2, 'Please enter in two characters']
+  },
+  dob: {
+    type: Number,
+    required: [false],
+    minlength: [10, 'Please enter in DD/MM/YYYY format'],
+    maxlength: [10, 'Please enter in DD/MM/YYYY format']
+  },
+  socialMedia: {
+    type: String,
+    required: [false],
+    minlength: [0, 'Please enter a valid link'],
+    maxlength: [99, 'Please enter a valid link']
+  },
+  profilePhoto: {
+    type: String
   }
 });
 
@@ -52,4 +81,5 @@ userSchema.pre('save', function(next) {
   next();
 });
 
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
+module.exports = User;
