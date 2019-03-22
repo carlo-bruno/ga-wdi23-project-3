@@ -4,6 +4,9 @@ const mongoose = require('mongoose');
 const expressJWT = require('express-jwt');
 const RateLimit = require('express-rate-limit');
 const helmet = require('helmet');
+const axios = require('axios');
+const User = require('./models/user');
+const Event = require('./models/event');
 
 const app = express();
 
@@ -26,7 +29,7 @@ const signupLimiter = new RateLimit({
   message: 'Maximum accounts created. Please try again later'
 });
 
-mongoose.connect('mongodb://localhost/jwt', {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true
 });
 const db = mongoose.connection;
@@ -37,9 +40,31 @@ db.on('error', (error) => {
   console.log(`Database error:\n${error}`);
 });
 
-// app.get('/', (req, res) => {
-//   res.send('🔥 Connected to server');
-// });
+// Meetup API
+function getMeetUps() {
+  let url = `https://api.meetup.com/2/open_events/?category=13&key=${process.env.MEETUP_API_KEY}&zip=98102`
+  return axios.get(url)
+}
+// Data.Seattle.Gov API
+function getOutreachEvents() {
+  let url = 'https://data.seattle.gov/resource/OutreachEventCalendar.json'
+    return axios.get(url)
+}
+// Data.Seattle.Gov API
+function getCityCouncilEvents() {
+  let url = 'https://data.seattle.gov/resource/mjjw-fp32.json'
+   return axios.get(url)
+}
+// Getting data from all three API's.
+app.get('/', (req, res) => {
+  axios.all([getMeetUps(), getOutreachEvents(), getCityCouncilEvents()])
+    .then(axios.spread( function(meetup, outreach, council){
+      res.json({
+        one: meetup.data, 
+        two: outreach.data, 
+        three: council.data})
+    }))
+})
 
 app.use(helmet());
 app.use('/auth/login', loginLimiter);
