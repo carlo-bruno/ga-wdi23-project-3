@@ -7,6 +7,7 @@ const helmet = require('helmet');
 const axios = require('axios');
 const User = require('./models/user');
 const Event = require('./models/event');
+const cloudinary = require('cloudinary');
 
 const app = express();
 
@@ -65,6 +66,19 @@ app.get('/', (req, res) => {
         three: council.data})
     }))
 })
+
+// app.post('/profile', upload.single('myFile'), (req, res) => {
+//   cloudinary.uploader.upload(req.file.path, (result) => {
+//   db.user.findOrCreate({
+//       where: {
+//       userId: parseInt(req.user.dataValues.id)
+//       },
+//       defaults: {profilePhoto: result.url}
+//   }).spread(function(photo, created) {
+//       res.redirect('/profile');
+//   });
+//   });
+// });
 
 app.use(helmet());
 app.use('/auth/login', loginLimiter);
