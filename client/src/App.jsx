@@ -4,9 +4,10 @@ import './App.css';
 // import Signup from './Components/Signup';
 // import Login from './Components/Login';
 import UserProfile from './Components/UserProfile';
-// import LandingPage from './Pages/LandingPage';
-// import UpdateProfile from './Pages/UpdateProfile';
+import LandingPage from './Pages/LandingPage';
+import UpdateProfile from './Pages/UpdateProfile';
 import Representative from './Pages/Representative';
+import MenuBar from './Components/MenuBar';
 
 class App extends Component {
   constructor(props) {
@@ -72,9 +73,12 @@ class App extends Component {
   render() {
     let user = this.state.user;
     let contents = (
-      // <LandingPage liftToken={this.liftTokenToState} />
-      // <UpdateProfile />
-      <Representative />
+      <>
+        <LandingPage liftToken={this.liftTokenToState} />
+        <UpdateProfile />
+        <Representative />
+        <MenuBar />
+      </>
     );
 
     if (user) {
