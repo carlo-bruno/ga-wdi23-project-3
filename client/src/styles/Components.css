@@ -101,3 +101,42 @@
   margin: 0 auto;
   height: 30px;
 }
+
+/* Events Card ------------------------------------ */
+.EventCard {
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-bottom: 0.8rem;
+}
+
+.EventCard h4,
+.EventCard p {
+  margin: 0;
+}
+
+.EventCard .date-box {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.EventCard .info-box {
+  width: 70%;
+  text-align: left;
+  padding: 0.5rem 0;
+}
+
+.EventCard .save-box {
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

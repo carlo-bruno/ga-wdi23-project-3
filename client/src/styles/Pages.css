@@ -1,3 +1,9 @@
+/* 
+Colors:
+green: 
+#008457
+*/
+
 /* Landing Page ----------------------------------- */
 .LandingPage {
   height: 100%;
@@ -9,7 +15,7 @@
 }
 
 .LandingPage section {
-  height: 50%;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -66,6 +72,54 @@
   border: 1px solid black;
   margin: 0 auto;
   height: 30px;
+}
+
+/* Events Page ------------------------------------ */
+.Events {
+  height: 100%;
+}
+
+.Events .events-filters {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 15px 20px 0;
+  background-color: #dddddd;
+  border-bottom: #dddddd;
+}
+
+.Events .events-filters .filter {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  background-color: #ffffff;
+
+  border: 1px solid #dddddd;
+  border-radius: 7px 7px 0 0;
+  padding-top: 7px;
+}
+
+.Events .events-filters .filter.active {
+  border-top: 7px solid #008457;
+  border-bottom: 0;
+  padding-top: 0;
+}
+
+.Events .events-count {
+  display: inline-block;
+  background-color: #dddddd;
+  border-radius: 20%;
+  padding: 0.2rem;
+  margin-left: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.Events .events-collection {
+  margin-top: 10px;
+  padding: 0 20px;
 }
 
 /* Representative Page ---------------------------- */

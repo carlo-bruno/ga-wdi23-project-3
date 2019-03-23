@@ -95,7 +95,6 @@ class Signup extends Component {
             value='Sign up!'
           />
         </form>
-        <hr />
       </div>
     );
   }

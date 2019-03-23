@@ -5,11 +5,11 @@ import './App.css';
 import MenuBar from './Components/MenuBar';
 import Header from './Components/Header';
 
-import Profile from './Pages/Profile';
 import LandingPage from './Pages/LandingPage';
+import Profile from './Pages/Profile';
+import Events from './Pages/Events';
 import UpdateProfile from './Pages/UpdateProfile';
 import Representative from './Pages/Representative';
-import Events from './Pages/Events';
 
 class App extends Component {
   constructor(props) {
@@ -76,11 +76,11 @@ class App extends Component {
     let user = this.state.user;
     let contents = (
       <>
-        <LandingPage liftToken={this.liftTokenToState} />
-        {/* <UpdateProfile /> */}
-        {/* <Representative /> */}
+        {/* <LandingPage liftToken={this.liftTokenToState} /> */}
         {/* <Profile user={user} logout={this.logout} /> */}
-        {/* <Events /> */}
+        {/* <UpdateProfile /> */}
+        <Events />
+        {/* <Representative /> */}
       </>
     );
 
