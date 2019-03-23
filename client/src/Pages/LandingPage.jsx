@@ -5,18 +5,15 @@ import Signup from '../Components/Signup';
 const LandingPage = (props) => {
   return (
     <div className='LandingPage'>
-      <header>
-        <div className='logo-box'>
-          <img src='' alt='logo' />
-        </div>
-        <h1>Project 3</h1>
-      </header>
       <section>
+        <h2>Be involved. Be empowered.</h2>
+        <h2>
+          Be <span className='brand-font'>Citizenly</span>.
+        </h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Minus commodi magni iure voluptate quidem maxime eveniet
-          quibusdam eos quae dicta non nemo fuga deserunt soluta,
-          optio temporibus natus itaque laborum?
+          You have the power to change the world. Lorem ipsum dolor
+          sit amet consectetur adipisicing elit. Laborum adipisci,
+          minima eligendi placeat veniam nulla nesciunt.
         </p>
       </section>
       <Login liftToken={props.liftToken} />

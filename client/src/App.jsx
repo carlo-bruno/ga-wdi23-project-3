@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-// import Signup from './Components/Signup';
-// import Login from './Components/Login';
 import UserProfile from './Components/UserProfile';
 import LandingPage from './Pages/LandingPage';
 import UpdateProfile from './Pages/UpdateProfile';
 import Representative from './Pages/Representative';
 import MenuBar from './Components/MenuBar';
 import Events from './Pages/Events';
+import Header from './Components/Header';
 
 class App extends Component {
   constructor(props) {
@@ -75,11 +74,10 @@ class App extends Component {
     let user = this.state.user;
     let contents = (
       <>
-        {/* <LandingPage liftToken={this.liftTokenToState} /> */}
-        <UpdateProfile />
-        {/* <Representative />
-        <Events /> */}
-        {/* <MenuBar /> */}
+        <LandingPage liftToken={this.liftTokenToState} />
+        {/* <UpdateProfile /> */}
+        {/* <Representative /> */}
+        {/* <Events /> */}
       </>
     );
 
@@ -91,7 +89,13 @@ class App extends Component {
       );
     }
 
-    return <div className='App'>{contents}</div>;
+    return (
+      <div className='App'>
+        <Header />
+        <main className='Content'>{contents}</main>
+        <MenuBar />
+      </div>
+    );
   }
 }
 
