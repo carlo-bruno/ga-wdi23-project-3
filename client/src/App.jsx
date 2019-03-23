@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import UserProfile from './Components/UserProfile';
+
+import MenuBar from './Components/MenuBar';
+import Header from './Components/Header';
+
+import Profile from './Pages/Profile';
 import LandingPage from './Pages/LandingPage';
 import UpdateProfile from './Pages/UpdateProfile';
 import Representative from './Pages/Representative';
-import MenuBar from './Components/MenuBar';
 import Events from './Pages/Events';
-import Header from './Components/Header';
 
 class App extends Component {
   constructor(props) {
@@ -77,15 +79,14 @@ class App extends Component {
         <LandingPage liftToken={this.liftTokenToState} />
         {/* <UpdateProfile /> */}
         {/* <Representative /> */}
+        {/* <Profile user={user} logout={this.logout} /> */}
         {/* <Events /> */}
       </>
     );
 
     if (user) {
       contents = (
-        <>
-          <UserProfile user={user} logout={this.logout} />
-        </>
+        <>{/* <Profile user={user} logout={this.logout} /> */}</>
       );
     }
 

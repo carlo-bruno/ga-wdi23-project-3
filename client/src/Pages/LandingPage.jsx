@@ -17,6 +17,7 @@ const LandingPage = (props) => {
         </p>
       </section>
       <Login liftToken={props.liftToken} />
+      <hr />
       <Signup liftToken={props.liftToken} />
     </div>
   );
