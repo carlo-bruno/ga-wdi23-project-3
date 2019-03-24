@@ -10,6 +10,7 @@ import Profile from './Pages/Profile';
 import Events from './Pages/Events';
 import UpdateProfile from './Pages/UpdateProfile';
 import Representative from './Pages/Representative';
+import Elections from './Pages/Elections';
 
 class App extends Component {
   constructor(props) {
@@ -81,6 +82,7 @@ class App extends Component {
         {/* <UpdateProfile /> */}
         <Events />
         {/* <Representative /> */}
+        <Elections />
       </>
     );
 
