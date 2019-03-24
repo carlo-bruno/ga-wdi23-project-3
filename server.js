@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const expressJWT = require('express-jwt');
@@ -7,9 +6,32 @@ const helmet = require('helmet');
 const axios = require('axios');
 const User = require('./models/user');
 const Event = require('./models/event');
+const multer = require('multer');
+const upload = multer({dest: './uploads/'});
 const cloudinary = require('cloudinary');
+const cloudinaryStorage = require("multer-storage-cloudinary");
+// const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
+// const geocodingClient = mbxGeocoding({
+//     accessToken: process.env.MAP_BOX_KEY
+//     });
+require('dotenv').config();
 
 const app = express();
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_KEY,
+  api_secret: process.env.CLOUD_SECRET
+});
+
+const storage = cloudinaryStorage({
+  cloudinary: cloudinary,
+  folder: "Citizenly",
+  allowedFormats: ["jpg", "png"],
+  transformation: [{ width: 500, height: 500, crop: "limit"}]
+});
+
+const parser = multer({ storage: storage })
 
 let port = process.env.PORT || 3001;
 
@@ -33,6 +55,7 @@ const signupLimiter = new RateLimit({
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true
 });
+
 const db = mongoose.connection;
 db.once('open', () => {
   console.log(`🔥 Connected to Mongo️ on ${db.host}:${db.port}`);
@@ -57,28 +80,43 @@ function getCityCouncilEvents() {
    return axios.get(url)
 }
 // Getting data from all three API's.
+
 app.get('/', (req, res) => {
   axios.all([getMeetUps(), getOutreachEvents(), getCityCouncilEvents()])
     .then(axios.spread( function(meetup, outreach, council){
-      res.json({
-        one: meetup.data, 
-        two: outreach.data, 
-        three: council.data})
+      let events = meetup.data.results;
+      const filteredEvents = events.filter(event => {event.description})
+      console.log(typeof(events))
+    res.json({
+      meetup: events
+      // outreach: outreach.data, 
+      // council: council.data
+    })
     }))
 })
 
-// app.post('/profile', upload.single('myFile'), (req, res) => {
-//   cloudinary.uploader.upload(req.file.path, (result) => {
-//   db.user.findOrCreate({
-//       where: {
-//       userId: parseInt(req.user.dataValues.id)
-//       },
-//       defaults: {profilePhoto: result.url}
-//   }).spread(function(photo, created) {
-//       res.redirect('/profile');
-//   });
+// app.get('/UpdateProfile', (req, res) => {
+//   db.user.findOne({
+//   where: {userId: req.user.id}
+//   }).then(function(photo) {
+//   if (photo) {
+//       res.render('user/profile', {photo: photo.link});
+//   } else {
+//       res.render('user/profile', {photo: null});
+//   };
 //   });
 // });
+
+app.post('/UpdateProfile', parser.single('myFile'), (req, res) => {
+  console.log(req.file.secure_url) // Returned img info
+  const image = {};
+  image.url = req.file.url;
+  image.id = req.file.public_id;
+  
+  User.create(image) //Save to DB
+    .then(newImage => res.json(newImage))
+    .catch(err => console.log(err))
+});
 
 app.use(helmet());
 app.use('/auth/login', loginLimiter);
@@ -96,3 +134,5 @@ app.use(
 app.listen(port, () =>
   console.log(`🔥 Listening on port ${port}...`)
 );
+
+module.exports = User;

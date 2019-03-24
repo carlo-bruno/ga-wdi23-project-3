@@ -47,7 +47,10 @@ const userSchema = new Schema({
     minlength: [0, 'Please enter a valid link'],
     maxlength: [99, 'Please enter a valid link']
   },
-  profilePhoto: {
+  image: {
+    type: String
+  }, 
+  image_id: {
     type: String
   }
 });
