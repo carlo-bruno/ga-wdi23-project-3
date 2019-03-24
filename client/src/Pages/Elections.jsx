@@ -3,11 +3,11 @@ import React from 'react';
 const Elections = (props) => {
     return (
         <div className='Elections'>
-            <div>Elections</div>
-            <div>Registration</div>
-            <div>Locations</div>
-            <div>Volunteer</div>
-            <div>Candidates</div>
+            <div className='election-link' href='/'>Elections</div>
+            <div className='registration' href='/'>Registration</div>
+            <div className='locations' href='/'>Locations</div>
+            <div className='volunteer' href='/'>Volunteer</div>
+            <div className='candidates' href='/'>Candidates</div>
         </div>
     )
 }

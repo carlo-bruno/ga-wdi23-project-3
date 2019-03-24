@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EventCard from '../Components/EventCard';
 
+
 class Events extends Component {
   constructor(props) {
     super(props);
@@ -12,9 +13,13 @@ class Events extends Component {
     };
   }
 
+
+ 
+
   changeFilter = (filter) => {
     this.setState({ filter });
   };
+
 
   render() {
     return (
@@ -38,9 +43,18 @@ class Events extends Component {
 
         <div className='events-collection'>
           {/* Cards of Events */}
+
+          <div className='event-card'>
+            <h3>Event Name</h3>
+            <p>Event Date</p>
+            <p>Event Location</p>
+            {this.map}
+          </div>
+
           <EventCard />
           <EventCard />
           <EventCard />
+]
         </div>
       </div>
     );

@@ -7,9 +7,17 @@ import Header from './Components/Header';
 
 import LandingPage from './Pages/LandingPage';
 import Profile from './Pages/Profile';
-import Events from './Pages/Events';
 import UpdateProfile from './Pages/UpdateProfile';
+import Events from './Pages/Events';
+import EventShow from './Pages/EventShow';
 import Representative from './Pages/Representative';
+
+import MenuBar from './Components/MenuBar';
+import Events from './Pages/Events';
+import MapBox from './Components/MapBox'
+
+import Elections from './Pages/Elections';
+
 
 class App extends Component {
   constructor(props) {
@@ -77,10 +85,19 @@ class App extends Component {
     let contents = (
       <>
         {/* <LandingPage liftToken={this.liftTokenToState} /> */}
+
+        {/* <UpdateProfile /> */}
+        {/* <Representative } /> */}
+         {<Events map={MapBox}/> }
+        {/* <MenuBar /> */}
+
         {/* <Profile user={user} logout={this.logout} /> */}
         {/* <UpdateProfile /> */}
-        <Events />
+        {/* <Events /> */}
+        <EventShow />
         {/* <Representative /> */}
+        <Elections />
+
       </>
     );
 
