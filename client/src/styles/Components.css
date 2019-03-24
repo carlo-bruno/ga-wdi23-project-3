@@ -1,0 +1,142 @@
+/* Header ----------------------------------------- */
+.Header {
+  height: 10vh;
+  background-color: #008457;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  color: #ffffff;
+}
+
+.Header .logo-box {
+  width: 40px;
+  height: 40px;
+  background-color: gray;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Menu Bar --------------------------------------- */
+.MenuBar {
+  background-color: #008457;
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.MenuBar svg {
+  width: 40px;
+  height: 40px;
+}
+
+.MenuBar svg path {
+  fill: #ffffff;
+}
+
+/* Login ------------------------------------------ */
+.Login form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.Login small {
+  display: block;
+  line-height: 16px;
+}
+
+.Login input {
+  font-size: 1rem;
+  width: 85%;
+  height: 30px;
+  margin: 0 auto 10px;
+  padding: 5px 10px;
+  border: 0;
+  border-bottom: 1px solid #333333;
+}
+
+.Login .button {
+  width: 75%;
+  border: 0;
+  border-radius: 3px;
+  margin: 0 auto;
+  height: 30px;
+}
+
+/* Signup ------------------------------------------ */
+.Signup form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.Signup small {
+  display: block;
+  line-height: 16px;
+}
+
+.Signup label {
+  text-align: left;
+  font-weight: 500;
+  width: 85%;
+  margin: 0 auto 5px;
+}
+
+.Signup input {
+  font-size: 1rem;
+  width: 85%;
+  height: 30px;
+  margin: 0 auto 10px;
+  padding: 5px 10px;
+  border: 0;
+  border-bottom: 1px solid #333333;
+}
+
+.Signup .button {
+  width: 75%;
+  border: 0;
+  border-radius: 3px;
+  margin: 0 auto;
+  height: 30px;
+}
+
+/* Events Card ------------------------------------ */
+.EventCard {
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-bottom: 0.8rem;
+}
+
+.EventCard h4,
+.EventCard p {
+  margin: 0;
+}
+
+.EventCard .date-box {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.EventCard .info-box {
+  width: 70%;
+  text-align: left;
+  padding: 0.5rem 0;
+}
+
+.EventCard .save-box {
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

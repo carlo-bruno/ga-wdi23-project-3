@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-// import Signup from './Components/Signup';
-// import Login from './Components/Login';
-import UserProfile from './Components/UserProfile';
+
+import MenuBar from './Components/MenuBar';
+import Header from './Components/Header';
+
 import LandingPage from './Pages/LandingPage';
+import Profile from './Pages/Profile';
+import Events from './Pages/Events';
 import UpdateProfile from './Pages/UpdateProfile';
 import Representative from './Pages/Representative';
+
 import MenuBar from './Components/MenuBar';
 import Events from './Pages/Events';
 import MapBox from './Components/MapBox'
+
+import Elections from './Pages/Elections';
+
 
 class App extends Component {
   constructor(props) {
@@ -77,22 +84,34 @@ class App extends Component {
     let contents = (
       <>
         {/* <LandingPage liftToken={this.liftTokenToState} /> */}
+
         {/* <UpdateProfile /> */}
         {/* <Representative } /> */}
          {<Events map={MapBox}/> }
         {/* <MenuBar /> */}
+
+        {/* <Profile user={user} logout={this.logout} /> */}
+        {/* <UpdateProfile /> */}
+        <Events />
+        {/* <Representative /> */}
+        <Elections />
+
       </>
     );
 
     if (user) {
       contents = (
-        <>
-          <UserProfile user={user} logout={this.logout} />
-        </>
+        <>{/* <Profile user={user} logout={this.logout} /> */}</>
       );
     }
 
-    return <div className='App'>{contents}</div>;
+    return (
+      <div className='App'>
+        <Header />
+        <main className='Content'>{contents}</main>
+        <MenuBar />
+      </div>
+    );
   }
 }
 
