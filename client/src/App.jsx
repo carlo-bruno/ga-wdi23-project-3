@@ -7,8 +7,9 @@ import Header from './Components/Header';
 
 import LandingPage from './Pages/LandingPage';
 import Profile from './Pages/Profile';
-import Events from './Pages/Events';
 import UpdateProfile from './Pages/UpdateProfile';
+import Events from './Pages/Events';
+import EventShow from './Pages/EventShow';
 import Representative from './Pages/Representative';
 
 class App extends Component {
@@ -79,7 +80,8 @@ class App extends Component {
         {/* <LandingPage liftToken={this.liftTokenToState} /> */}
         {/* <Profile user={user} logout={this.logout} /> */}
         {/* <UpdateProfile /> */}
-        <Events />
+        {/* <Events /> */}
+        <EventShow />
         {/* <Representative /> */}
       </>
     );
