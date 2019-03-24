@@ -7,8 +7,9 @@ import Header from './Components/Header';
 
 import LandingPage from './Pages/LandingPage';
 import Profile from './Pages/Profile';
-import Events from './Pages/Events';
 import UpdateProfile from './Pages/UpdateProfile';
+import Events from './Pages/Events';
+import EventShow from './Pages/EventShow';
 import Representative from './Pages/Representative';
 
 import MenuBar from './Components/MenuBar';
@@ -92,7 +93,8 @@ class App extends Component {
 
         {/* <Profile user={user} logout={this.logout} /> */}
         {/* <UpdateProfile /> */}
-        <Events />
+        {/* <Events /> */}
+        <EventShow />
         {/* <Representative /> */}
         <Elections />
 
