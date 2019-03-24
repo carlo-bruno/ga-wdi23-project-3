@@ -8,7 +8,7 @@ const UpdateProfile = (props) => {
         <a href='/'>Log Out</a>
       </header>
       <p>Upload profile picture:</p>
-      <form id="photo-upload"enctype="multipart/form-data" method='POST' action='/profile'>
+      <form id="photo-upload"encType="multipart/form-data" method='POST' action='/UpdateProfile'>
         <input type='file' name='myFile'/>
         <input type='submit' className='btn btn-primary'/>
       </form>

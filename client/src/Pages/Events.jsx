@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class Events extends Component {
   constructor(props) {
     super(props);
@@ -9,6 +10,8 @@ class Events extends Component {
       saved: []
     };
   }
+
+ 
 
   render() {
     return (
@@ -25,6 +28,7 @@ class Events extends Component {
             <h3>Event Name</h3>
             <p>Event Date</p>
             <p>Event Location</p>
+            {this.map}
           </div>
         </div>
       </div>

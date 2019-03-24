@@ -9,6 +9,7 @@ import UpdateProfile from './Pages/UpdateProfile';
 import Representative from './Pages/Representative';
 import MenuBar from './Components/MenuBar';
 import Events from './Pages/Events';
+import MapBox from './Components/MapBox'
 
 class App extends Component {
   constructor(props) {
@@ -76,9 +77,9 @@ class App extends Component {
     let contents = (
       <>
         {/* <LandingPage liftToken={this.liftTokenToState} /> */}
-        <UpdateProfile />
-        {/* <Representative />
-        <Events /> */}
+        {/* <UpdateProfile /> */}
+        {/* <Representative } /> */}
+         {<Events map={MapBox}/> }
         {/* <MenuBar /> */}
       </>
     );
