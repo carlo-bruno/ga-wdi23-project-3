@@ -4,6 +4,7 @@ import './App.css';
 
 import MenuBar from './Components/MenuBar';
 import Header from './Components/Header';
+import MapBox from './Components/MapBox';
 
 import LandingPage from './Pages/LandingPage';
 import Profile from './Pages/Profile';
@@ -11,12 +12,8 @@ import UpdateProfile from './Pages/UpdateProfile';
 import Events from './Pages/Events';
 import EventShow from './Pages/EventShow';
 import Representative from './Pages/Representative';
-
-import MenuBar from './Components/MenuBar';
-import Events from './Pages/Events';
-import MapBox from './Components/MapBox'
-
 import Elections from './Pages/Elections';
+
 
 
 class App extends Component {
@@ -88,7 +85,7 @@ class App extends Component {
 
         {/* <UpdateProfile /> */}
         {/* <Representative } /> */}
-         {<Events map={MapBox}/> }
+        {<Events map={MapBox} />}
         {/* <MenuBar /> */}
 
         {/* <Profile user={user} logout={this.logout} /> */}
@@ -97,7 +94,6 @@ class App extends Component {
         <EventShow />
         {/* <Representative /> */}
         <Elections />
-
       </>
     );
 
