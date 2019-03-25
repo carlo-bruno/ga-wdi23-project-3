@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class UpdateProfile extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       isHidden: true
     };
@@ -29,13 +28,10 @@ class UpdateProfile extends Component {
             className={`cloudinary ${
               this.state.isHidden ? 'hidden' : ''
             }`}>
-            <form
-              id='photo-upload'
-              encType='multipart/form-data'
-              method='POST'
-              action='/UpdateProfile'>
+            <form id="photo-upload" encType="multipart/form-data" method='POST' action='/UpdateProfile'>
+              <input type='hidden' name='userId' value={props.user ? props.user._id : ''} />
               <input type='file' name='myFile' />
-              <input type='submit' className='btn' />
+              <input type='submit' className='btn btn-primary' />
             </form>
           </div>
         </div>
