@@ -79,8 +79,8 @@ class App extends Component {
     let contents = (
       <>
         {/* <LandingPage liftToken={this.liftTokenToState} /> */}
-        <Profile user={user} logout={this.logout} />
-        {/* <UpdateProfile /> */}
+        {/* <Profile user={user} logout={this.logout} /> */}
+        <UpdateProfile />
         {/* <Events /> */}
         {/* <EventShow /> */}
         {/* <Representative /> */}
