@@ -87,39 +87,39 @@ function getCityCouncilEvents() {
 app.get('/', (req, res) => {
   axios.all([getMeetUps(), getOutreachEvents(), getCityCouncilEvents()])
     .then(axios.spread(function (meetupData, outreachData, councilData) {
-      // let meetups = meetupData.data.results.map( event => {
-      //   console.log(event)
-      //   let meetup = {
-      //     event_name: event.name ? "NAME EXISTS" : "NO NAMEEEEEEEE",
-      //     venue: event.venue ? "event.venue.name" : 'THERE IS NO VENUE NAME',
-      //     street_address: event.venue.address_1,
-      //     start_time: new Date(event.time),
-      //     event_url: event.event_url,
-      //     lat: event.venue.lat,
-      //     lon: event.venue.lon,
-      //     desc: event.description
-      //   }
-      //   console.log('MEETUP =====> ', meetup)
-      //   return meetup
-      // })
-      // console.log(meetups)
-// console.log(outreachData)
-//       let outreach = outreachData.data.map(event => {
-//         console.log(outreach)
-//         return {
-//           event_name: event, 
-//           venue: venue,
-//           street_address: street_address,
-//           start_time: start_time,
-//           event_url: event_info_url,
-//           lat: latitude, 
-//           lon: longitude,
-//           description: event_description_agenda
-//         }
-//       })
 
-      let council = councilData.data.map(event => {
-        return {
+      let meetups = meetupData.data.results
+      .filter((event) => event.venue)
+      .map((event) => {
+        let meetup = {
+          event_name: event.name,
+          venue: event.venue.name,
+          street_address: event.venue.address_1,
+          start_time: new Date(event.time),
+          event_url: event.event_url,
+          lat: event.venue.lat,
+          lon: event.venue.lon,
+          description: event.description
+        };
+        return meetup;
+      });
+  
+      let outreaches = outreachData.data.map(event => {
+        let outreach= {
+          event_name: event.event, 
+          venue: event.venue,
+          street_address: event.street_address,
+          start_time: event.start_time,
+          event_url: event.event_info_url,
+          lat: event.latitude, 
+          lon: event.longitude,
+          description: event.event_description_agenda
+        };
+        return outreach;
+      })
+
+      let councils = councilData.data.map(event => {
+        let council = {
           event_name: event.event,
           venue: event.venue,
           street_address: event.street_address,
@@ -128,13 +128,14 @@ app.get('/', (req, res) => {
           lat: event.latitude,
           lon: event.longitude,
           description: event.event_desription_agenda
-        }
+        };
+        return council;
       })
 
       res.json({
-        council
-        // meetups,
-        // outreach,
+        councils,
+        meetups,
+        outreaches
       })
     })).catch( err => res.json({err}))
 })
