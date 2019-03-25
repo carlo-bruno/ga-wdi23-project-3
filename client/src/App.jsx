@@ -4,24 +4,22 @@ import './App.css';
 
 import MenuBar from './Components/MenuBar';
 import Header from './Components/Header';
-import MapBox from './Components/MapBox';
 
 import LandingPage from './Pages/LandingPage';
 import Profile from './Pages/Profile';
 import UpdateProfile from './Pages/UpdateProfile';
 import Events from './Pages/Events';
 import EventShow from './Pages/EventShow';
+// InOffice
 import Representative from './Pages/Representative';
 import Elections from './Pages/Elections';
-
-
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       token: '',
-      user: false,
+      user: null,
       errorMessage: '',
       lockedResult: ''
     };
@@ -59,9 +57,9 @@ class App extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
-    // axios.defaults.headers.common['Authorization'] = `Bearer ${
-    //   this.state.token
-    // }`;
+    axios.defaults.headers.common['Authorization'] = `Bearer ${
+      this.state.token
+      }`;
     let config = {
       headers: {
         Authorization: `Bearer ${this.state.token}`
@@ -81,25 +79,19 @@ class App extends Component {
     let user = this.state.user;
     let contents = (
       <>
-        {/* <LandingPage liftToken={this.liftTokenToState} /> */}
-
-        {/* <UpdateProfile /> */}
-        {/* <Representative } /> */}
-        {<Events map={MapBox} />}
-        {/* <MenuBar /> */}
-
+        <LandingPage liftToken={this.liftTokenToState} />
         {/* <Profile user={user} logout={this.logout} /> */}
-        {/* <UpdateProfile /> */}
+        {/* <UpdateProfile  user={user? user : '' }/> */}
         {/* <Events /> */}
-        <EventShow />
+        {/* <EventShow /> */}
         {/* <Representative /> */}
-        <Elections />
+        {/* <Elections /> */}
       </>
     );
 
     if (user) {
       contents = (
-        <>{/* <Profile user={user} logout={this.logout} /> */}</>
+        <><UpdateProfile user={user ? user : ''} /></>
       );
     }
 

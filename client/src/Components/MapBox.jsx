@@ -16,4 +16,4 @@ class MapBox extends Component {
     }
 }
 
-export default MapBox
+export default MapBox;
