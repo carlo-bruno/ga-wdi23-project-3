@@ -86,8 +86,7 @@ function getCityCouncilEvents() {
 
 app.get('/', (req, res) => {
   axios.all([getMeetUps(), getOutreachEvents(), getCityCouncilEvents()])
-    .then(axios.spread(function (meetupData, outreachData, councils) {
-      // console.log('=================', meetupData)
+    .then(axios.spread(function (meetupData, outreachData, councilData) {
       // let meetups = meetupData.data.results.map( event => {
       //   console.log(event)
       //   let meetup = {
@@ -104,39 +103,38 @@ app.get('/', (req, res) => {
       //   return meetup
       // })
       // console.log(meetups)
-console.log(outreachData)
-      let outreach = outreachData.data.map(event => {
-        console.log(outreach)
+// console.log(outreachData)
+//       let outreach = outreachData.data.map(event => {
+//         console.log(outreach)
+//         return {
+//           event_name: event, 
+//           venue: venue,
+//           street_address: street_address,
+//           start_time: start_time,
+//           event_url: event_info_url,
+//           lat: latitude, 
+//           lon: longitude,
+//           description: event_description_agenda
+//         }
+//       })
+
+      let council = councilData.data.map(event => {
         return {
-          event_name: event, 
-          venue: venue,
-          street_address: street_address,
-          start_time: start_time,
-          event_url: event_info_url,
-          lat: latitude, 
-          lon: longitude,
-          description: event_description_agenda
+          event_name: event.event,
+          venue: event.venue,
+          street_address: event.street_address,
+          start_time: event.start_time,
+          event_url: event.event_info_url,
+          lat: event.latitude,
+          lon: event.longitude,
+          description: event.event_desription_agenda
         }
       })
-
-      let council = council.data.map(event => {
-        return {
-          event_name: 
-          venue:
-          street_address:
-          start_time:
-          event_url:
-          lat:
-          lon:
-          description: 
-        }
-      })
-
 
       res.json({
+        council
         // meetups,
-        outreach,
-        // councils: councils
+        // outreach,
       })
     })).catch( err => res.json({err}))
 })
