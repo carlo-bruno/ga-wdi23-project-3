@@ -4,17 +4,16 @@ import './App.css';
 
 import MenuBar from './Components/MenuBar';
 import Header from './Components/Header';
-import MapBox from './Components/MapBox';
 
 import LandingPage from './Pages/LandingPage';
 import Profile from './Pages/Profile';
 import UpdateProfile from './Pages/UpdateProfile';
 import Events from './Pages/Events';
 import EventShow from './Pages/EventShow';
+// InOffice
 import Representative from './Pages/Representative';
 import Elections from './Pages/Elections';
-
-
+import MapBox from './Components/MapBox'
 
 class App extends Component {
   constructor(props) {
@@ -61,7 +60,7 @@ class App extends Component {
     e.preventDefault();
     axios.defaults.headers.common['Authorization'] = `Bearer ${
       this.state.token
-    }`;
+      }`;
     let config = {
       headers: {
         Authorization: `Bearer ${this.state.token}`
@@ -75,6 +74,7 @@ class App extends Component {
 
   componentDidMount() {
     this.checkForLocalToken();
+    console.log("MAAAAPPPPPPP KEEEEYYY ++++++++>>>>>>", process.env.REACT_APP_MAPBOX_API_KEY)
   }
 
   render() {
@@ -91,7 +91,7 @@ class App extends Component {
         {/* <Profile user={user} logout={this.logout} /> */}
         {/* <UpdateProfile  user={user? user : '' }/> */}
         {/* <Events /> */}
-        {/* <EventShow map={MapBox}/> */}
+        {/* <EventShow /> */}
         {/* <Representative /> */}
         {/* <Elections /> */}
       </>
@@ -99,7 +99,7 @@ class App extends Component {
 
     if (user) {
       contents = (
-        <><MapBox/></>
+        <MapBox />
       );
     }
 
