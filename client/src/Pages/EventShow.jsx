@@ -5,11 +5,8 @@ import { ReactComponent as Contact } from '../images/address-book-regular.svg';
 // import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 
 class EventShow extends Component {
-  // componentDidMount() {
-  //   const Map = new ReactMapboxGl({
-  //     accessToken: process.env.MAP_BOX_KEY
-  // });
-  // }
+    
+  
   render() {
     return (
 
@@ -52,13 +49,12 @@ class EventShow extends Component {
               architecto quo porro error consequuntur sequi ipsam
               voluptatem nam.
           </p>
-          </div>
-        </section>
-        {/* <new Map /> */}
+        </div>
+      </section>
 
-      </div>
-    )
-  };
+ 
+    </div>
+  )};
 };
 
 export default EventShow;

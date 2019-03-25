@@ -146,3 +146,13 @@
   justify-content: center;
   align-items: center;
 }
+
+.mapboxgl-canvas {
+  border: 2px solid black;
+  text-align: justify;
+}
+
+.mapboxgl-map {
+  border: 2px solid black;
+  text-align: justify;
+}

@@ -13,6 +13,7 @@ import EventShow from './Pages/EventShow';
 // InOffice
 import Representative from './Pages/Representative';
 import Elections from './Pages/Elections';
+import MapBox from './Components/MapBox'
 
 class App extends Component {
   constructor(props) {
@@ -73,13 +74,20 @@ class App extends Component {
 
   componentDidMount() {
     this.checkForLocalToken();
+    console.log("MAAAAPPPPPPP KEEEEYYY ++++++++>>>>>>", process.env.REACT_APP_MAPBOX_API_KEY)
   }
 
   render() {
     let user = this.state.user;
     let contents = (
       <>
-        <LandingPage liftToken={this.liftTokenToState} />
+        {/* <LandingPage liftToken={this.liftTokenToState} /> */}
+
+        {/* <UpdateProfile /> */}
+        {/* <Representative } /> */}
+        {/* {<Events />} */}
+        {/* <MenuBar /> */}
+
         {/* <Profile user={user} logout={this.logout} /> */}
         {/* <UpdateProfile  user={user? user : '' }/> */}
         {/* <Events /> */}
@@ -91,7 +99,7 @@ class App extends Component {
 
     if (user) {
       contents = (
-        <><UpdateProfile user={user ? user : ''} /></>
+        <MapBox />
       );
     }
 

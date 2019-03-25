@@ -108,11 +108,11 @@ app.get('/UpdateProfile', (req, res) => {
 });
 
 app.post('/UpdateProfile', parser.single('myFile'), (req, res) => {
-  console.log("LINNNNKKKKKKKK", req.file.secure_url) // Returned img info
+  // console.log("LINNNNKKKKKKKK", req.file.secure_url) // Returned img info
   const image = {};
   image.url = req.file.url;
   image.id = req.file.public_id;
-  console.log("USER ID++++++++:",req.body.userId)
+  // console.log("USER ID++++++++:",req.body.userId)
   User.findByIdAndUpdate( req.body.userId, {
     $set: {
       image: req.file.secure_url
