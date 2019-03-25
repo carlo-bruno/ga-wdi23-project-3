@@ -22,7 +22,7 @@ class App extends Component {
       token: '',
       user: null,
       errorMessage: '',
-      lockedResult: ''
+      events: []
     };
   }
 
@@ -74,10 +74,11 @@ class App extends Component {
 
   componentDidMount() {
     this.checkForLocalToken();
-    console.log(
-      'MAAAAPPPPPPP KEEEEYYY ++++++++>>>>>>',
-      process.env.REACT_APP_MAPBOX_API_KEY
-    );
+
+    // get events
+    axios.get('/events').then((response) => {
+      this.setState({ events: response.data.events });
+    });
   }
 
   render() {
@@ -107,7 +108,10 @@ class App extends Component {
         />
         {/* <UpdateProfile  user={user? user : '' }/> */}
 
-        <Route path='/events' render={() => <Events />} />
+        <Route
+          path='/events'
+          render={() => <Events events={this.state.events} />}
+        />
         {/* <Events /> */}
 
         {/* <Route path='/events/:id' render={() => <EventShow />} /> */}

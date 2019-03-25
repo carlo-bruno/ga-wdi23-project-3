@@ -55,7 +55,7 @@ router.get('/', (req, res) => {
             event_name: event.event,
             venue: event.venue,
             street_address: event.street_address,
-            start_time: event.start_time,
+            start_time: new Date(event.start_time),
             event_url: event.event_info_url,
             lat: event.latitude,
             lon: event.longitude,
@@ -69,7 +69,7 @@ router.get('/', (req, res) => {
             event_name: event.event,
             venue: event.venue,
             street_address: event.street_address,
-            start_time: event.start_time,
+            start_time: new Date(event.start_time),
             event_url: event.event_info_url,
             lat: event.latitude,
             lon: event.longitude,
@@ -78,7 +78,11 @@ router.get('/', (req, res) => {
           return council;
         });
 
-        let allData = meetups.concat(councils, outreaches);
+        let allData = meetups
+          .concat(councils, outreaches)
+          .filter(
+            (event) => Date.now() < event.start_time.getTime()
+          );
 
         res.json({
           events: allData
