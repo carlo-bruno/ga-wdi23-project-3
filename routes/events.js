@@ -4,7 +4,6 @@ const axios = require('axios');
 
 // Meetup API
 function getMeetUps() {
-  console.log('getting getMeetUps');
   let url = `https://api.meetup.com/2/open_events/?category=13&key=${
     process.env.MEETUP_API_KEY
   }&zip=98102`;
@@ -12,14 +11,12 @@ function getMeetUps() {
 }
 // Data.Seattle.Gov API
 function getOutreachEvents() {
-  console.log('getting getOutreachEvents');
   let url =
     'https://data.seattle.gov/resource/OutreachEventCalendar.json';
   return axios.get(url);
 }
 // Data.Seattle.Gov API
 function getCityCouncilEvents() {
-  console.log('getting getCityCouncilEvents');
   let url = 'https://data.seattle.gov/resource/mjjw-fp32.json';
   return axios.get(url);
 }

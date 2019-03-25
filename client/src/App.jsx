@@ -8,6 +8,7 @@ import Header from './Components/Header';
 
 import LandingPage from './Pages/LandingPage';
 import Profile from './Pages/Profile';
+import Signup from './Pages/Signup';
 import UpdateProfile from './Pages/UpdateProfile';
 import Events from './Pages/Events';
 import EventShow from './Pages/EventShow';
@@ -15,8 +16,6 @@ import EventShow from './Pages/EventShow';
 // InOffice
 import Representative from './Pages/Representative';
 import Elections from './Pages/Elections';
-
-
 
 class App extends Component {
   constructor(props) {
@@ -128,13 +127,9 @@ class App extends Component {
 
         <Route path='/elections' component={Elections} />
         {/* <Elections /> */}
-      
-        <Route 
-          path='/signup'
-          render={() => <Signup />} />
-      
+
+        <Route path='/signup' render={() => <Signup />} />
       </>
-      
     );
 
     if (user) {
