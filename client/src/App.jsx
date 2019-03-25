@@ -81,7 +81,7 @@ class App extends Component {
     let user = this.state.user;
     let contents = (
       <>
-        <LandingPage liftToken={this.liftTokenToState} />
+        {/* <LandingPage liftToken={this.liftTokenToState} /> */}
 
         {/* <UpdateProfile /> */}
         {/* <Representative } /> */}
@@ -99,7 +99,7 @@ class App extends Component {
 
     if (user) {
       contents = (
-        <><UpdateProfile  user={user? user : '' }/></>
+        <><MapBox/></>
       );
     }
 
