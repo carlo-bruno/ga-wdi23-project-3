@@ -11,6 +11,7 @@ import Profile from './Pages/Profile';
 import UpdateProfile from './Pages/UpdateProfile';
 import Events from './Pages/Events';
 import EventShow from './Pages/EventShow';
+
 // InOffice
 import Representative from './Pages/Representative';
 import Elections from './Pages/Elections';
