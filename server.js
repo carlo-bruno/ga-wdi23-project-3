@@ -9,14 +9,12 @@ const Event = require('./models/event');
 const multer = require('multer');
 const upload = multer({ dest: './uploads/' });
 const cloudinary = require('cloudinary');
-const cloudinaryStorage = require('multer-storage-cloudinary');
-// const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
-// const geocodingClient = mbxGeocoding({
-//     accessToken: process.env.MAP_BOX_KEY
-//     });
+const cloudinaryStorage = require("multer-storage-cloudinary");
 require('dotenv').config();
 
 const app = express();
+
+let port = process.env.PORT || 3001;
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -33,7 +31,6 @@ const storage = cloudinaryStorage({
 
 const parser = multer({ storage: storage });
 
-let port = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -79,28 +76,20 @@ app.get('/UpdateProfile', (req, res) => {
 });
 
 app.post('/UpdateProfile', parser.single('myFile'), (req, res) => {
-  // console.log("LINNNNKKKKKKKK", req.file.secure_url) // Returned img info
   const image = {};
   image.url = req.file.url;
   image.id = req.file.public_id;
-  // console.log("USER ID++++++++:",req.body.userId)
-  User.findByIdAndUpdate(
-    req.body.userId,
-    {
-      $set: {
-        image: req.file.secure_url
-      }
-    },
-    { new: true },
-    (err, user) => {
-      console.log('USER     ', user);
-      if (err) console.log('ERROR: =====> ');
-      user.save(() => {
-        res.json(user);
-      });
-    }
-  ) //Save to DB
-    .catch((err) => console.log(err));
+
+  // Update user model with image url
+  User.findByIdAndUpdate( req.body.userId, {
+    $set: {image: req.file.secure_url}
+  }, {new: true}, (err, user) => {
+    if (err) console.log('ERROR: =====> ', err)
+    //Save to DB
+    user.save( () => {
+      res.json(user)
+    })
+  }).catch(err => console.log(err))
 });
 
 app.use(helmet());
