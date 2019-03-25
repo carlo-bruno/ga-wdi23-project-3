@@ -92,7 +92,7 @@ app.get('/', (req, res) => {
       .filter((event) => event.venue)
       .map((event) => {
         let meetup = {
-          event_name: event.name,
+          event_name: event.name, 
           venue: event.venue.name,
           street_address: event.venue.address_1,
           start_time: new Date(event.time),
@@ -132,10 +132,10 @@ app.get('/', (req, res) => {
         return council;
       })
 
+      let allData = meetups.concat(councils, outreaches);
+
       res.json({
-        councils,
-        meetups,
-        outreaches
+        events: allData
       })
     })).catch( err => res.json({err}))
 })
