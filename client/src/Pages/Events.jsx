@@ -13,13 +13,9 @@ class Events extends Component {
     };
   }
 
-
-
-
   changeFilter = (filter) => {
     this.setState({ filter });
   };
-
 
   render() {
     return (
@@ -28,14 +24,14 @@ class Events extends Component {
           <div
             className={`filter ${
               this.state.filter === 'all' ? 'active' : ''
-            }`}
+              }`}
             onClick={() => this.changeFilter('all')}>
             ALL <span className='events-count'>20</span>{' '}
           </div>
           <div
             className={`filter ${
               this.state.filter === 'saved' ? 'active' : ''
-            }`}
+              }`}
             onClick={() => this.changeFilter('saved')}>
             SAVED <span className='events-count'>5</span>
           </div>
@@ -44,17 +40,10 @@ class Events extends Component {
         <div className='events-collection'>
           {/* Cards of Events */}
 
-          <div className='event-card'>
-            <h3>Event Name</h3>
-            <p>Event Date</p>
-            <p>Event Location</p>
-            {this.map}
-          </div>
+          <EventCard />
+          <EventCard />
+          <EventCard />
 
-          <EventCard />
-          <EventCard />
-          <EventCard />
-]
         </div>
       </div>
     );
