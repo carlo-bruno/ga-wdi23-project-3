@@ -14,7 +14,6 @@ import EventShow from './Pages/EventShow';
 // InOffice
 import Representative from './Pages/Representative';
 import Elections from './Pages/Elections';
-import MapBox from './Components/MapBox';
 
 class App extends Component {
   constructor(props) {
