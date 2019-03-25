@@ -66,33 +66,79 @@ db.on('error', (error) => {
 
 // Meetup API
 function getMeetUps() {
+  console.log('getting getMeetUps')
   let url = `https://api.meetup.com/2/open_events/?category=13&key=${process.env.MEETUP_API_KEY}&zip=98102`
-  return axios.get(url)
+    return axios.get(url)
 }
 // Data.Seattle.Gov API
 function getOutreachEvents() {
+  console.log('getting getOutreachEvents')
   let url = 'https://data.seattle.gov/resource/OutreachEventCalendar.json'
     return axios.get(url)
 }
 // Data.Seattle.Gov API
 function getCityCouncilEvents() {
+  console.log('getting getCityCouncilEvents')
   let url = 'https://data.seattle.gov/resource/mjjw-fp32.json'
-   return axios.get(url)
+  return axios.get(url)
 }
 // Getting data from all three API's.
 
 app.get('/', (req, res) => {
   axios.all([getMeetUps(), getOutreachEvents(), getCityCouncilEvents()])
-    .then(axios.spread( function(meetup, outreach, council){
-      let events = meetup.data.results;
-      const filteredEvents = events.filter(event => {event.description})
+    .then(axios.spread(function (meetupData, outreachData, councils) {
+      // console.log('=================', meetupData)
+      // let meetups = meetupData.data.results.map( event => {
+      //   console.log(event)
+      //   let meetup = {
+      //     event_name: event.name ? "NAME EXISTS" : "NO NAMEEEEEEEE",
+      //     venue: event.venue ? "event.venue.name" : 'THERE IS NO VENUE NAME',
+      //     street_address: event.venue.address_1,
+      //     start_time: new Date(event.time),
+      //     event_url: event.event_url,
+      //     lat: event.venue.lat,
+      //     lon: event.venue.lon,
+      //     desc: event.description
+      //   }
+      //   console.log('MEETUP =====> ', meetup)
+      //   return meetup
+      // })
+      // console.log(meetups)
+console.log(outreachData)
+      let outreach = outreachData.data.map(event => {
+        console.log(outreach)
+        return {
+          event_name: event, 
+          venue: venue,
+          street_address: street_address,
+          start_time: start_time,
+          event_url: event_info_url,
+          lat: latitude, 
+          lon: longitude,
+          description: event_description_agenda
+        }
+      })
 
-    res.json({
-      meetup: events
-      // outreach: outreach.data, 
-      // council: council.data
-    })
-    }))
+      let council = council.data.map(event => {
+        return {
+          event_name: 
+          venue:
+          street_address:
+          start_time:
+          event_url:
+          lat:
+          lon:
+          description: 
+        }
+      })
+
+
+      res.json({
+        // meetups,
+        outreach,
+        // councils: councils
+      })
+    })).catch( err => res.json({err}))
 })
 
 app.get('/UpdateProfile', (req, res) => {
