@@ -21,7 +21,7 @@ class App extends Component {
     super(props);
     this.state = {
       token: '',
-      user: false,
+      user: null,
       errorMessage: '',
       lockedResult: ''
     };
@@ -59,9 +59,9 @@ class App extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
-    // axios.defaults.headers.common['Authorization'] = `Bearer ${
-    //   this.state.token
-    // }`;
+    axios.defaults.headers.common['Authorization'] = `Bearer ${
+      this.state.token
+    }`;
     let config = {
       headers: {
         Authorization: `Bearer ${this.state.token}`
@@ -81,25 +81,25 @@ class App extends Component {
     let user = this.state.user;
     let contents = (
       <>
-        {/* <LandingPage liftToken={this.liftTokenToState} /> */}
+        <LandingPage liftToken={this.liftTokenToState} />
 
         {/* <UpdateProfile /> */}
         {/* <Representative } /> */}
-        {<Events map={MapBox} />}
+        {/* {<Events />} */}
         {/* <MenuBar /> */}
 
         {/* <Profile user={user} logout={this.logout} /> */}
-        {/* <UpdateProfile /> */}
+        {/* <UpdateProfile  user={user? user : '' }/> */}
         {/* <Events /> */}
-        <EventShow />
+        {/* <EventShow map={MapBox}/> */}
         {/* <Representative /> */}
-        <Elections />
+        {/* <Elections /> */}
       </>
     );
 
     if (user) {
       contents = (
-        <>{/* <Profile user={user} logout={this.logout} /> */}</>
+        <><UpdateProfile  user={user? user : '' }/></>
       );
     }
 

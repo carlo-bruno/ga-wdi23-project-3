@@ -40,14 +40,14 @@ app.use(express.json());
 
 const loginLimiter = new RateLimit({
   windowMs: 5 * 60 * 1000, // 5mins
-  max: 3,
+  max: 100,
   // delayMs: 0,
   message: 'Maximum login attemps exceeded!'
 });
 
 const signupLimiter = new RateLimit({
   windowMs: 60 * 60 * 1000, // 1hr
-  max: 3,
+  max: 100,
   // delayMs: 0,
   message: 'Maximum accounts created. Please try again later'
 });
@@ -86,7 +86,7 @@ app.get('/', (req, res) => {
     .then(axios.spread( function(meetup, outreach, council){
       let events = meetup.data.results;
       const filteredEvents = events.filter(event => {event.description})
-      console.log(typeof(events))
+
     res.json({
       meetup: events
       // outreach: outreach.data, 
@@ -95,27 +95,36 @@ app.get('/', (req, res) => {
     }))
 })
 
-// app.get('/UpdateProfile', (req, res) => {
-//   db.user.findOne({
-//   where: {userId: req.user.id}
-//   }).then(function(photo) {
-//   if (photo) {
-//       res.render('user/profile', {photo: photo.link});
-//   } else {
-//       res.render('user/profile', {photo: null});
-//   };
-//   });
-// });
+app.get('/UpdateProfile', (req, res) => {
+  db.user.findOne({
+  where: {userId: req.user.id}
+  }).then(function(photo) {
+  if (photo) {
+      res.render('user/profile', {photo: photo.link});
+  } else {
+      res.render('user/profile', {photo: null});
+  };
+  });
+});
 
 app.post('/UpdateProfile', parser.single('myFile'), (req, res) => {
-  console.log(req.file.secure_url) // Returned img info
+  console.log("LINNNNKKKKKKKK", req.file.secure_url) // Returned img info
   const image = {};
   image.url = req.file.url;
   image.id = req.file.public_id;
-  
-  User.create(image) //Save to DB
-    .then(newImage => res.json(newImage))
-    .catch(err => console.log(err))
+  console.log("USER ID++++++++:",req.body.userId)
+  User.findByIdAndUpdate( req.body.userId, {
+    $set: {
+      image: req.file.secure_url
+    }
+  }, {new: true}, (err, user) => {
+    console.log("USER     ",user)
+    if (err) console.log('ERROR: =====> ')
+    user.save( () => {
+      res.json(user)
+    })
+  }) //Save to DB
+.catch(err => console.log(err))
 });
 
 app.use(helmet());

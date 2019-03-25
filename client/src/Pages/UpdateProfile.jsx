@@ -10,6 +10,7 @@ const UpdateProfile = (props) => {
       <p>Upload profile picture:</p>
 
       <form id="photo-upload" encType="multipart/form-data" method='POST' action='/UpdateProfile'>
+        <input type='hidden' name='userId' value={props.user ? props.user._id : ''} />
         <input type='file' name='myFile' />
         <input type='submit' className='btn btn-primary' />
       </form>
