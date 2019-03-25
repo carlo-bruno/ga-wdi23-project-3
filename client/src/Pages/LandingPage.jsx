@@ -1,6 +1,5 @@
 import React from 'react';
 import Login from '../Components/Login';
-import Signup from '../Components/Signup';
 
 const LandingPage = (props) => {
   return (
@@ -18,7 +17,6 @@ const LandingPage = (props) => {
       </section>
       <Login liftToken={props.liftToken} />
       <hr />
-      <Signup liftToken={props.liftToken} />
     </div>
   );
 };

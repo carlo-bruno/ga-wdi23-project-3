@@ -18,6 +18,23 @@ class Signup extends Component {
     });
   };
 
+  handleCityChange = (e) => {
+    this.setState({
+      city: e.target.value
+    });
+  };
+
+  handleZipcodeChange = (e) => {
+    this.setState({
+      zipcode: e.target.value
+    });
+  };
+  handleStateChange = (e) => {
+  this.setState({
+    stateName: e.target.value
+    });
+  };
+
   handleEmailChange = (e) => {
     this.setState({
       email: e.target.value
@@ -71,6 +88,34 @@ class Signup extends Component {
             placeholder='User Example'
           />
 
+          <label htmlFor='city'>City:</label>
+          <input 
+          value={this.state.city}
+          onChange={this.handle}
+          type='text'
+          name='city'
+          placeholder='Seattle'
+          />
+
+          <label htmlFor='stateName'>State:</label>
+          <input 
+          value={this.state.stateName}
+          onChange={this.handle}
+          type='text'
+          name='stateName'
+          placeholder='Washington State'
+          />
+
+          <label htmlFor='zipcode'>Zipcode:</label>
+          <input 
+          value={this.state.zipcode}
+          onChange={this.handle}
+          type='text'
+          name='zipcode'
+          pattern= '[0-9]*'
+          placeholder='55404'
+          />
+          
           <label htmlFor='email'>Email:</label>
           <input
             value={this.state.email}

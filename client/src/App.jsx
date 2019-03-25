@@ -15,6 +15,7 @@ import EventShow from './Pages/EventShow';
 import Representative from './Pages/Representative';
 import Elections from './Pages/Elections';
 import MapBox from './Components/MapBox';
+import Signup from './Pages/Signup';
 
 class App extends Component {
   constructor(props) {
@@ -123,7 +124,13 @@ class App extends Component {
 
         <Route path='/elections' component={Elections} />
         {/* <Elections /> */}
+      
+        <Route 
+          path='/signup'
+          render={() => <Signup />} />
+      
       </>
+      
     );
 
     if (user) {
