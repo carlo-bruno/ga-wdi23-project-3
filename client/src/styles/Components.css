@@ -22,6 +22,11 @@
   margin: 0;
 }
 
+.Header a {
+  color: inherit;
+  text-decoration: none;
+}
+
 /* Menu Bar --------------------------------------- */
 .MenuBar {
   background-color: #008457;

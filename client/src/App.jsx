@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Route } from 'react-router-dom';
 import './App.css';
 
 import MenuBar from './Components/MenuBar';
@@ -59,7 +60,7 @@ class App extends Component {
     e.preventDefault();
     axios.defaults.headers.common['Authorization'] = `Bearer ${
       this.state.token
-      }`;
+    }`;
     let config = {
       headers: {
         Authorization: `Bearer ${this.state.token}`
@@ -79,19 +80,52 @@ class App extends Component {
     let user = this.state.user;
     let contents = (
       <>
-        <LandingPage liftToken={this.liftTokenToState} />
+        <Route
+          exact
+          path='/'
+          render={() => (
+            <LandingPage liftToken={this.liftTokenToState} />
+          )}
+        />
+        {/* <LandingPage liftToken={this.liftTokenToState} /> */}
+
+        <Route
+          path='/profile'
+          render={() => (
+            <Profile user={user} logout={this.logout} />
+          )}
+        />
         {/* <Profile user={user} logout={this.logout} /> */}
+
+        <Route
+          path='/profile/update'
+          render={() => <UpdateProfile user={user ? user : ''} />}
+        />
         {/* <UpdateProfile  user={user? user : '' }/> */}
+
+        <Route path='/events' render={() => <Events />} />
         {/* <Events /> */}
+
+        {/* <Route path='/events/:id' render={() => <EventShow />} /> */}
+        <Route path='/events/show' render={() => <EventShow />} />
         {/* <EventShow /> */}
+
+        <Route
+          path='/office/show'
+          render={() => <Representative />}
+        />
         {/* <Representative /> */}
+
+        <Route path='/elections' component={Elections} />
         {/* <Elections /> */}
       </>
     );
 
     if (user) {
       contents = (
-        <><UpdateProfile user={user ? user : ''} /></>
+        <>
+          <UpdateProfile user={user ? user : ''} />
+        </>
       );
     }
 
@@ -99,6 +133,7 @@ class App extends Component {
       <div className='App'>
         <Header />
         <main className='Content'>{contents}</main>
+
         <MenuBar />
       </div>
     );
