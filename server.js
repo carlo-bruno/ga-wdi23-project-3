@@ -10,13 +10,12 @@ const multer = require('multer');
 const upload = multer({dest: './uploads/'});
 const cloudinary = require('cloudinary');
 const cloudinaryStorage = require("multer-storage-cloudinary");
-// const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
-// const geocodingClient = mbxGeocoding({
-//     accessToken: process.env.MAP_BOX_KEY
-//     });
+
 require('dotenv').config();
 
 const app = express();
+
+let port = process.env.PORT || 3001;
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -33,7 +32,6 @@ const storage = cloudinaryStorage({
 
 const parser = multer({ storage: storage })
 
-let port = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -64,17 +62,17 @@ db.on('error', (error) => {
   console.log(`Database error:\n${error}`);
 });
 
-// Meetup API
+// Meetup API call
 function getMeetUps() {
   let url = `https://api.meetup.com/2/open_events/?category=13&key=${process.env.MEETUP_API_KEY}&zip=98102`
   return axios.get(url)
 }
-// Data.Seattle.Gov API
+// Data.Seattle.Gov API Outreach Event call
 function getOutreachEvents() {
   let url = 'https://data.seattle.gov/resource/OutreachEventCalendar.json'
     return axios.get(url)
 }
-// Data.Seattle.Gov API
+// Data.Seattle.Gov API Council Event call 
 function getCityCouncilEvents() {
   let url = 'https://data.seattle.gov/resource/mjjw-fp32.json'
    return axios.get(url)
@@ -108,23 +106,19 @@ app.get('/UpdateProfile', (req, res) => {
 });
 
 app.post('/UpdateProfile', parser.single('myFile'), (req, res) => {
-  // console.log("LINNNNKKKKKKKK", req.file.secure_url) // Returned img info
   const image = {};
   image.url = req.file.url;
   image.id = req.file.public_id;
-  // console.log("USER ID++++++++:",req.body.userId)
+  // Update user model with image url
   User.findByIdAndUpdate( req.body.userId, {
-    $set: {
-      image: req.file.secure_url
-    }
+    $set: {image: req.file.secure_url}
   }, {new: true}, (err, user) => {
-    console.log("USER     ",user)
-    if (err) console.log('ERROR: =====> ')
+    if (err) console.log('ERROR: =====> ', err)
+    //Save to DB
     user.save( () => {
       res.json(user)
     })
-  }) //Save to DB
-.catch(err => console.log(err))
+  }).catch(err => console.log(err))
 });
 
 app.use(helmet());
