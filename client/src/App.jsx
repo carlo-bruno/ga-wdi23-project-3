@@ -75,10 +75,6 @@ class App extends Component {
 
   componentDidMount() {
     this.checkForLocalToken();
-    console.log(
-      'MAAAAPPPPPPP KEEEEYYY ++++++++>>>>>>',
-      process.env.REACT_APP_MAPBOX_API_KEY
-    );
   }
 
   render() {
