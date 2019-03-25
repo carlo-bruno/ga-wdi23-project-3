@@ -14,7 +14,7 @@ class Events extends Component {
   }
 
 
- 
+
 
   changeFilter = (filter) => {
     this.setState({ filter });
