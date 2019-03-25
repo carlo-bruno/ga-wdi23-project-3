@@ -11,10 +11,12 @@ import Profile from './Pages/Profile';
 import UpdateProfile from './Pages/UpdateProfile';
 import Events from './Pages/Events';
 import EventShow from './Pages/EventShow';
+
 // InOffice
 import Representative from './Pages/Representative';
 import Elections from './Pages/Elections';
-import MapBox from './Components/MapBox';
+
+
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +25,7 @@ class App extends Component {
       token: '',
       user: null,
       errorMessage: '',
-      lockedResult: ''
+      events: []
     };
   }
 
@@ -75,6 +77,10 @@ class App extends Component {
 
   componentDidMount() {
     this.checkForLocalToken();
+    // get events
+    axios.get('/events').then((response) => {
+      this.setState({ events: response.data.events });
+    });
   }
 
   render() {
@@ -104,7 +110,10 @@ class App extends Component {
         />
         {/* <UpdateProfile  user={user? user : '' }/> */}
 
-        <Route path='/events' render={() => <Events />} />
+        <Route
+          path='/events'
+          render={() => <Events events={this.state.events} />}
+        />
         {/* <Events /> */}
 
         {/* <Route path='/events/:id' render={() => <EventShow />} /> */}
@@ -119,7 +128,13 @@ class App extends Component {
 
         <Route path='/elections' component={Elections} />
         {/* <Elections /> */}
+      
+        <Route 
+          path='/signup'
+          render={() => <Signup />} />
+      
       </>
+      
     );
 
     if (user) {
