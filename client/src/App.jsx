@@ -83,7 +83,7 @@ class App extends Component {
         {/* <Profile user={user} logout={this.logout} /> */}
         {/* <UpdateProfile  user={user? user : '' }/> */}
         {/* <Events /> */}
-        {/* <EventShow map={MapBox}/> */}
+        {/* <EventShow /> */}
         {/* <Representative /> */}
         {/* <Elections /> */}
       </>
