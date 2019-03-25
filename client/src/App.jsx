@@ -74,7 +74,6 @@ class App extends Component {
 
   componentDidMount() {
     this.checkForLocalToken();
-
     // get events
     axios.get('/events').then((response) => {
       this.setState({ events: response.data.events });
