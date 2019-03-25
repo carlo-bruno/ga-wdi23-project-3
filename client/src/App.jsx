@@ -91,9 +91,9 @@ class App extends Component {
         {/* <Profile user={user} logout={this.logout} /> */}
         {/* <UpdateProfile /> */}
         {/* <Events /> */}
-        <EventShow />
+        {/* <EventShow /> */}
         {/* <Representative /> */}
-        <Elections />
+        {/* <Elections /> */}
       </>
     );
 
