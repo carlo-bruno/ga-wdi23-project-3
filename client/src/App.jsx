@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Route } from 'react-router-dom';
 import './App.css';
 
 import MenuBar from './Components/MenuBar';
@@ -13,7 +14,7 @@ import EventShow from './Pages/EventShow';
 // InOffice
 import Representative from './Pages/Representative';
 import Elections from './Pages/Elections';
-import MapBox from './Components/MapBox'
+import MapBox from './Components/MapBox';
 
 class App extends Component {
   constructor(props) {
@@ -60,7 +61,7 @@ class App extends Component {
     e.preventDefault();
     axios.defaults.headers.common['Authorization'] = `Bearer ${
       this.state.token
-      }`;
+    }`;
     let config = {
       headers: {
         Authorization: `Bearer ${this.state.token}`
@@ -80,25 +81,52 @@ class App extends Component {
     let user = this.state.user;
     let contents = (
       <>
+        <Route
+          exact
+          path='/'
+          render={() => (
+            <LandingPage liftToken={this.liftTokenToState} />
+          )}
+        />
         {/* <LandingPage liftToken={this.liftTokenToState} /> */}
 
-        {/* <UpdateProfile /> */}
-        {/* <Representative } /> */}
-        {/* {<Events />} */}
-        {/* <MenuBar /> */}
-
+        <Route
+          path='/profile'
+          render={() => (
+            <Profile user={user} logout={this.logout} />
+          )}
+        />
         {/* <Profile user={user} logout={this.logout} /> */}
+
+        <Route
+          path='/profile/update'
+          render={() => <UpdateProfile user={user ? user : ''} />}
+        />
         {/* <UpdateProfile  user={user? user : '' }/> */}
+
+        <Route path='/events' render={() => <Events />} />
         {/* <Events /> */}
+
+        {/* <Route path='/events/:id' render={() => <EventShow />} /> */}
+        <Route path='/events/show' render={() => <EventShow />} />
         {/* <EventShow /> */}
+
+        <Route
+          path='/office/show'
+          render={() => <Representative />}
+        />
         {/* <Representative /> */}
+
+        <Route path='/elections' component={Elections} />
         {/* <Elections /> */}
       </>
     );
 
     if (user) {
       contents = (
-        <MapBox />
+        <>
+          <UpdateProfile user={user ? user : ''} />
+        </>
       );
     }
 
@@ -106,6 +134,7 @@ class App extends Component {
       <div className='App'>
         <Header />
         <main className='Content'>{contents}</main>
+
         <MenuBar />
       </div>
     );
