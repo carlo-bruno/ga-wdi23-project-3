@@ -10,6 +10,7 @@ import Profile from './Pages/Profile';
 import UpdateProfile from './Pages/UpdateProfile';
 import Events from './Pages/Events';
 import EventShow from './Pages/EventShow';
+// InOffice
 import Representative from './Pages/Representative';
 import Elections from './Pages/Elections';
 
@@ -58,7 +59,7 @@ class App extends Component {
     e.preventDefault();
     axios.defaults.headers.common['Authorization'] = `Bearer ${
       this.state.token
-    }`;
+      }`;
     let config = {
       headers: {
         Authorization: `Bearer ${this.state.token}`
@@ -79,7 +80,6 @@ class App extends Component {
     let contents = (
       <>
         <LandingPage liftToken={this.liftTokenToState} />
-
         {/* <Profile user={user} logout={this.logout} /> */}
         {/* <UpdateProfile  user={user? user : '' }/> */}
         {/* <Events /> */}
@@ -91,7 +91,7 @@ class App extends Component {
 
     if (user) {
       contents = (
-        <><UpdateProfile  user={user? user : '' }/></>
+        <><UpdateProfile user={user ? user : ''} /></>
       );
     }
 
