@@ -2,6 +2,7 @@
 Colors:
 green: 
 #008457
+#059d6a
 */
 
 /* Landing Page ----------------------------------- */
@@ -23,37 +24,114 @@ green:
   align-items: center;
 }
 
-/* Update Profile Page ----------------------------------- */
-.UpdateProfile {
-  background: linear-gradient(#439775 40%, rgba(67, 151, 117, 0.5));
+/* Profile Page ----------------------------------- */
+.Profile {
   height: 100%;
 }
 
-.UpdateProfile header {
-  height: 30px;
-  background-color: gray;
+.Profile h2 {
+  margin: 0;
+  padding: 10px 0;
 }
 
-.UpdateProfile header a {
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 1.1em;
-  text-decoration: none;
-  padding: 5px;
-  line-height: 30px;
+.Profile p {
+  margin: 0;
 }
 
-.UpdateProfile .welcome {
+.Profile section {
+  background-color: #008457;
+  padding-bottom: 20px;
+}
+
+.Profile .profile-img {
+  padding-bottom: 10px;
+}
+
+.Profile header {
+  height: 40px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
 }
 
-.UpdateProfile .profile-img {
-  width: 50%;
+.Profile svg {
+  width: 30px;
+  height: 30px;
+}
+
+.Profile svg path {
+  fill: #ffffff;
+}
+
+.Profile .profile-img img {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.Profile button {
+  margin-top: 8vh;
+  border: 3px solid #008457;
+  background-color: #059d6a;
+  color: #ffffff;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 3% 15%;
+}
+
+/* Update Profile Page ---------------------------- */
+.UpdateProfile {
+  height: 100%;
+  position: static;
+}
+
+.UpdateProfile h2 {
+  margin: 0;
+  padding: 15px 0;
+}
+
+.UpdateProfile small {
+  display: block;
+  padding: 5px 0;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.UpdateProfile small:hover,
+.UpdateProfile small:active {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.UpdateProfile .cloudinary {
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  opacity: 1;
+  transition: all 250ms ease-in-out;
+}
+
+.UpdateProfile .cloudinary.hidden {
+  display: none;
+  opacity: 0;
+}
+
+#photo-upload {
+  background-color: #008457;
+  border-radius: 5px;
+  width: 90%;
+  margin: 0 auto;
+  transition: all 250ms ease-in-out;
+}
+
+#photo-upload input {
+  width: 70%;
+  padding: 0;
 }
 
 .UpdateProfile form {
-  background-color: gray;
+  background-color: lightgray;
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -67,7 +145,8 @@ green:
   padding: 5px 10px;
 }
 
-.UpdateProfile form button {
+.UpdateProfile form button,
+#photo-upload .btn {
   width: 75%;
   border: 1px solid black;
   margin: 0 auto;
@@ -139,7 +218,7 @@ green:
 }
 
 .EventShow .title-box {
-  text-align: left;
+  text-align: center;
   padding: 0 15px;
   margin-bottom: 8px;
 }
@@ -174,7 +253,6 @@ green:
 
 .Representative .rep-profile-img img {
   border-radius: 50%;
-  border: 10px solid #008457;
 }
 
 .Representative header {
