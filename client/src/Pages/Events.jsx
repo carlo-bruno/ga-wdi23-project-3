@@ -1,24 +1,34 @@
 import React, { Component } from 'react';
 import EventCard from '../Components/EventCard';
 import { ReactComponent as Back } from '../images/chevron-left-solid.svg';
+import axios from 'axios';
 
 class Events extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      filter: 'all'
+      filter: 'all',
+      zip: '',
     };
+    this.handleChange = this.handleChange.bind(this)
   }
-
-  changeFilter = (filter) => {
-    this.setState({ filter });
-  };
 
   componentDidMount() {
     this.setState({
       events: this.props.events
     });
+  }
+  
+  changeFilter = (filter) => {
+    this.setState({ filter });
+  };
+
+  handleChange(e) {
+    console.log("HANDLE CHANGEEEE")
+    this.setState({
+      zip: e.target.value
+    })
   }
 
   render() {
@@ -27,6 +37,7 @@ class Events extends Component {
         ? this.props.events
         : this.props.saved;
     let cards = display.map((event, i) => {
+      console.log(event.name)
       return <EventCard key={i} event={event} />;
     });
 
@@ -36,14 +47,15 @@ class Events extends Component {
           <i onClick={() => this.props.history.goBack()}>
             <Back />
           </i>
-          <form action=''>
             <input
+            onChange={this.handleChange}
               type='text'
               name='queryZip'
               id='queryZip'
               placeholder='zip code'
+              value={this.state.zip}
             />
-          </form>
+            <button onClick={() => this.props.getEvents(this.state.zip)}>Search</button>
         </header>
         <div className='events-filters'>
           <div

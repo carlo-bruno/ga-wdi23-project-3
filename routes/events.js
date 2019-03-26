@@ -6,10 +6,10 @@ const Event = require('../models/event')
 
 
 // Meetup API
-function getMeetUps() {
+function getMeetUps(query) {
   let url = `https://api.meetup.com/2/open_events/?category=13&key=${
     process.env.MEETUP_API_KEY
-  }&zip=98102`;
+  }&zip=${query}`;
   return axios.get(url);
 }
 // Data.Seattle.Gov API
@@ -24,11 +24,10 @@ function getCityCouncilEvents() {
   return axios.get(url);
 }
 // Getting data from all three API's.
-
 router.get('/', (req, res) => {
-  axios
+axios
     .all([
-      getMeetUps(),
+      getMeetUps(98102),
       getOutreachEvents(),
       getCityCouncilEvents()
     ])
@@ -103,6 +102,57 @@ router.get('/', (req, res) => {
         });
       })
     )
+    .catch((err) => res.json({ err }));
+})
+
+router.get('/:zip', (req, res) => {
+  let url =`https://api.meetup.com/2/open_events/?category=13&key=${
+    process.env.MEETUP_API_KEY
+  }&zip=${req.params.zip}`
+  axios.get(url).then(function(meetupData) {
+        console.log("IN SECOND AXIOS QUERYYYYYY")
+        var meetups = meetupData.data.results
+          .filter((event) => event.venue && event.description)
+          .map((event) => {
+            console.log('EVENT', event)
+            let meetup = {
+              event_name: event.name ,
+              venue: event.venue.name ,
+              street_address: event.venue.address_1 ,
+              start_time: new Date(event.time) ,
+              event_url: event.event_url ,
+              lat: event.venue.lat ,
+              lon: event.venue.lon ,
+              description: event.description.replace(
+                /(<([^>]+)>)/gi,
+                '\n'
+              )
+            };
+            console.log("OBJ",meetup)
+            return meetup;
+          });
+
+        console.log("MEETOPS", meetups)
+        let allData = meetups
+          .filter(
+            (event) => Date.now() < event.start_time.getTime()
+          )
+          .sort((a, b) => {
+            return a.start_time > b.start_time
+              ? 1
+              : a.start_time < b.start_time
+              ? -1
+              : 0;
+          });
+        console.log('ALLLLLLL DATA', allData)
+        allData.forEach((event, i) => {
+          Object.assign(event, { id: i });
+        });
+        console.log("KENGTH", allData.length)
+        res.json({
+          events: allData
+        });
+      })
     .catch((err) => res.json({ err }));
 });
 

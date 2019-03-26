@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const OfficeCard = (props) => {
+
   return (
     <div className='OfficeCard'>
       <div className='rep-info'>
@@ -15,6 +16,6 @@ const OfficeCard = (props) => {
       </div>
     </div>
   );
-};
-
+}
 export default OfficeCard;
+
