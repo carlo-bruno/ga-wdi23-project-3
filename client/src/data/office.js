@@ -1,4 +1,4 @@
-let city = [{
+export const city = [{
     name: 'Jenny A. Durkan',
     title: 'Mayor',
     img: 'http://www.seattle.gov/images/shared/contacts/durkan.jpg',
@@ -135,7 +135,7 @@ let city = [{
     twitter: 'https://twitter.com/seamunicourt?lang=en'
 }]
 
-let county = [{
+export const county = [{
     name: 'Dow Constantine',
     title: 'King County Executive',
     img: 'https://www.kingcounty.gov/~/media/elected/portal/elected-exec-lg.ashx?la=en',
@@ -243,3 +243,4 @@ let county = [{
     phone: '(206) 296-4155',
     email: 'sheriff@kingcounty.gov'
 }]
+
