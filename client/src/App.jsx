@@ -84,15 +84,15 @@ class App extends Component {
       this.setState({ events: response.data.events });
     });
   }
-  
+
   getEvents = (zip) => {
     let url = `/events/${zip}`;
     axios.get(url).then((res) => {
       this.setState({
-        events: res.data.events 
-      }) 
-    })
-  }
+        events: res.data.events
+      });
+    });
+  };
 
   render() {
     let user = this.state.user;
@@ -171,7 +171,11 @@ class App extends Component {
           <Route
             path='/events/:id'
             render={(props) => (
-              <EventShow events={this.state.events} {...props} />
+              <EventShow
+                events={this.state.events}
+                user={user}
+                {...props}
+              />
             )}
           />
 
