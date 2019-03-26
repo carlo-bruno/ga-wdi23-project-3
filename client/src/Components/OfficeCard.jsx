@@ -5,7 +5,9 @@ const OfficeCard = (props) => {
   return (
     <div className='OfficeCard'>
       <div className='rep-info'>
-        <h3>{props.name}</h3>
+        <Link to={`/office/${props.name}`}>
+          <h3>{props.name}</h3>
+        </Link>
         <p>{props.title}</p>
       </div>
       <div className='image-box'>

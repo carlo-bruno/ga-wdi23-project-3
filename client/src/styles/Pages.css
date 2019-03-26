@@ -321,21 +321,21 @@ green:
   overflow-y: scroll;
 }
 
-/* Representative Page ---------------------------- */
-.Representative {
+/* OfficeShow Page ---------------------------- */
+.OfficeShow {
   height: 100%;
 }
 
-.Representative .rep-profile-img img {
+.OfficeShow .rep-profile-img img {
   border-radius: 50%;
 }
 
-.Representative header {
+.OfficeShow header {
   height: 30px;
   background-color: gray;
 }
 
-.Representative header a {
+.OfficeShow header a {
   color: #ffffff;
   font-weight: 600;
   font-size: 1.1em;
