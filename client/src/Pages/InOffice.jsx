@@ -1,10 +1,9 @@
 import React from 'react';
 
 import OfficeCard from '../Components/OfficeCard';
-import { city, county } from '../data/office';
 
 const InOffice = (props) => {
-  let cityReps = city.map((rep, i) => {
+  let cityReps = props.office.city.map((rep, i) => {
     return (
       <OfficeCard
         key={i}
@@ -15,7 +14,7 @@ const InOffice = (props) => {
     );
   });
 
-  let countyReps = county.map((rep, i) => {
+  let countyReps = props.office.county.map((rep, i) => {
     return (
       <OfficeCard
         key={i}
