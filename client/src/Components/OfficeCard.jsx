@@ -1,10 +1,14 @@
 import React from 'react';
-import moment from 'moment';
 import { Link } from 'react-router-dom';
 
-const InOffice = (props) => {
-    return 
-}
+const OfficeCard = (props) => {
+  return (
+    <div className='OfficeCard'>
+      <img src={props.img} alt={props.name} />
+      <p>{props.name}</p>
+      <p>{props.title}</p>
+    </div>
+  );
+};
 
-
-export default InOffice;
+export default OfficeCard;

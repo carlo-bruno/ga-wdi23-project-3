@@ -1,6 +1,8 @@
 import React from 'react';
+import InOffice from './InOffice';
 
-const OfficeShow = (props) => {
+
+const Representative = (props) => {
   return (
     <div className='Representative'>
       <header>
@@ -11,7 +13,7 @@ const OfficeShow = (props) => {
         <img src='' alt='' />
       </section>
       <section className='rep-profile'>
-        <h2>hi</h2>
+        <h2>Name</h2>
         <h4>Title</h4>
         <h4>Location</h4>
         <div className='social'>
@@ -34,4 +36,4 @@ const OfficeShow = (props) => {
   );
 };
 
-export default OfficeShow;
+export default Representative;
