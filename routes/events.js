@@ -7,7 +7,7 @@ const Event = require('../models/event')
 function getMeetUps() {
   let url = `https://api.meetup.com/2/open_events/?category=13&key=${
     process.env.MEETUP_API_KEY
-  }&zip={/*zip goes here*/}`;
+  }&zip=98102`;
   return axios.get(url);
 }
 // Data.Seattle.Gov API
