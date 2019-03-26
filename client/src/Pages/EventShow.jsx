@@ -5,7 +5,7 @@ import { ReactComponent as Clock } from '../images/clock-regular.svg';
 import { ReactComponent as Marker } from '../images/map-marker-alt-solid.svg';
 import { ReactComponent as Contact } from '../images/address-book-regular.svg';
 import { ReactComponent as BookmarkR } from '../images/bookmark-regular.svg';
-import { ReactComponent as BookmarkS } from '../images/bookmark-solid.svg';
+// import { ReactComponent as BookmarkS } from '../images/bookmark-solid.svg';
 
 import MapBox from '../Components/MapBox';
 
