@@ -1,8 +1,11 @@
 import React from 'react';
 import moment from 'moment';
+import { ReactComponent as Back } from '../images/chevron-left-solid.svg';
 import { ReactComponent as Clock } from '../images/clock-regular.svg';
 import { ReactComponent as Marker } from '../images/map-marker-alt-solid.svg';
 import { ReactComponent as Contact } from '../images/address-book-regular.svg';
+import { ReactComponent as BookmarkR } from '../images/bookmark-regular.svg';
+import { ReactComponent as BookmarkS } from '../images/bookmark-solid.svg';
 
 // import MapBox from '../Components/MapBox';
 
@@ -66,6 +69,14 @@ const EventShow = (props) => {
 
   return (
     <div className='EventShow'>
+      <header>
+        <a onClick={() => props.history.goBack()}>
+          <Back />
+        </a>
+        <a href='/'>
+          <BookmarkR />
+        </a>
+      </header>
       {content}
       {/* Mapbox goes here */}
       {/* <MapBox /> */}
