@@ -7,9 +7,9 @@ const Profile = (props) => {
     <div className='Profile'>
       <section>
         <header>
-          <a href='/'>
+          <i onClick={() => props.history.goBack()}>
             <Back />
-          </a>
+          </i>
           <a href='/'>
             <Cog />
           </a>

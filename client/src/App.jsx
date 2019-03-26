@@ -97,8 +97,8 @@ class App extends Component {
         <Route
           exact
           path='/profile'
-          render={() => (
-            <Profile user={user} logout={this.logout} />
+          render={(props) => (
+            <Profile user={user} logout={this.logout} {...props} />
           )}
         />
 
