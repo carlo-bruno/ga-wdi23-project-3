@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as Calendar } from '../images/calendar-regular.svg';
 import { ReactComponent as Office } from '../images/landmark-solid.svg';
 import { ReactComponent as Vote } from '../images/vote-yea-solid.svg';
+import { ReactComponent as User } from '../images/user-alt-solid.svg';
 
 class MenuBar extends Component {
   render() {
@@ -17,6 +18,9 @@ class MenuBar extends Component {
         </Link>
         <Link to='/elections'>
           <Vote />
+        </Link>
+        <Link to='/profile'>
+          <User />
         </Link>
       </div>
     );

@@ -23,7 +23,17 @@ const Profile = (props) => {
         <p>98111</p>
       </section>
 
-      <button>Your Saved Events &rarr;</button>
+      <button className='saved-btn'>
+        Your Saved Events &rarr;
+      </button>
+      <button
+        className='logout-btn'
+        onClick={() => {
+          props.logout();
+          props.history.push('/');
+        }}>
+        Log Out &rarr;
+      </button>
     </div>
   );
 };

@@ -60,9 +60,9 @@ class App extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
-    axios.defaults.headers.common['Authorization'] = `Bearer ${
-      this.state.token
-    }`;
+    // axios.defaults.headers.common['Authorization'] = `Bearer ${
+    //   this.state.token
+    // }`;
     let config = {
       headers: {
         Authorization: `Bearer ${this.state.token}`
@@ -84,19 +84,38 @@ class App extends Component {
 
   render() {
     let user = this.state.user;
+    let home = (
+      <Route
+        exact
+        path='/'
+        render={() => (
+          <LandingPage liftToken={this.liftTokenToState} />
+        )}
+      />
+    );
+
+    if (user) {
+      home = (
+        <Route
+          exact
+          path='/'
+          render={(props) => (
+            <Events
+              events={this.state.events}
+              saved={this.state.saved}
+              {...props}
+            />
+          )}
+        />
+      );
+    }
 
     return (
       <div className='App'>
         <Header />
 
         <main className='Content'>
-          <Route
-            exact
-            path='/'
-            render={() => (
-              <LandingPage liftToken={this.liftTokenToState} />
-            )}
-          />
+          {home}
 
           <Route
             exact
