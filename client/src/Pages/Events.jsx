@@ -6,9 +6,7 @@ class Events extends Component {
     super(props);
 
     this.state = {
-      filter: 'all',
-      events: [],
-      saved: []
+      filter: 'all'
     };
   }
 
@@ -23,7 +21,11 @@ class Events extends Component {
   }
 
   render() {
-    let cards = this.props.events.map((event, i) => {
+    let display =
+      this.state.filter === 'all'
+        ? this.props.events
+        : this.props.saved;
+    let cards = display.map((event, i) => {
       return <EventCard key={i} event={event} />;
     });
 
@@ -45,7 +47,10 @@ class Events extends Component {
               this.state.filter === 'saved' ? 'active' : ''
             }`}
             onClick={() => this.changeFilter('saved')}>
-            SAVED <span className='events-count'>5</span>
+            SAVED{' '}
+            <span className='events-count'>
+              {this.props.saved.length}
+            </span>
           </div>
         </div>
 

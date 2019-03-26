@@ -12,7 +12,6 @@ import Signup from './Pages/Signup';
 import UpdateProfile from './Pages/UpdateProfile';
 import Events from './Pages/Events';
 import EventShow from './Pages/EventShow';
-
 // InOffice
 import Representative from './Pages/Representative';
 import Elections from './Pages/Elections';
@@ -24,7 +23,8 @@ class App extends Component {
       token: '',
       user: null,
       errorMessage: '',
-      events: []
+      events: [],
+      saved: []
     };
   }
 
@@ -93,40 +93,44 @@ class App extends Component {
             <LandingPage liftToken={this.liftTokenToState} />
           )}
         />
-        {/* <LandingPage liftToken={this.liftTokenToState} /> */}
 
         <Route
+          exact
           path='/profile'
           render={() => (
             <Profile user={user} logout={this.logout} />
           )}
         />
-        {/* <Profile user={user} logout={this.logout} /> */}
 
         <Route
           path='/profile/update'
           render={() => <UpdateProfile user={user ? user : ''} />}
         />
-        {/* <UpdateProfile  user={user? user : '' }/> */}
 
         <Route
+          exact
           path='/events'
-          render={() => <Events events={this.state.events} />}
+          render={() => (
+            <Events
+              events={this.state.events}
+              saved={this.state.saved}
+            />
+          )}
         />
-        {/* <Events /> */}
 
-        {/* <Route path='/events/:id' render={() => <EventShow />} /> */}
-        <Route path='/events/show' render={() => <EventShow />} />
-        {/* <EventShow /> */}
+        <Route
+          path='/events/:id'
+          render={(props) => (
+            <EventShow events={this.state.events} {...props} />
+          )}
+        />
 
         <Route
           path='/office/show'
           render={() => <Representative />}
         />
-        {/* <Representative /> */}
 
         <Route path='/elections' component={Elections} />
-        {/* <Elections /> */}
 
         <Route path='/signup' render={() => <Signup />} />
       </>
@@ -143,6 +147,7 @@ class App extends Component {
     return (
       <div className='App'>
         <Header />
+
         <main className='Content'>{contents}</main>
 
         <MenuBar />
