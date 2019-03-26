@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ReactComponent as Back } from '../images/chevron-left-solid.svg';
 import { ReactComponent as Cog } from '../images/cog-solid.svg';
 
@@ -10,9 +11,9 @@ const Profile = (props) => {
           <i onClick={() => props.history.goBack()}>
             <Back />
           </i>
-          <a href='/'>
+          <Link to='/profile/update'>
             <Cog />
-          </a>
+          </Link>
         </header>
 
         <div className='profile-img'>
