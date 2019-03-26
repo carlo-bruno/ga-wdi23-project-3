@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EventCard from '../Components/EventCard';
+import { ReactComponent as Back } from '../images/chevron-left-solid.svg';
 
 class Events extends Component {
   constructor(props) {
@@ -31,6 +32,12 @@ class Events extends Component {
 
     return (
       <div className='Events'>
+        {/* <header>
+          <i onClick={() => this.props.history.goBack()}>
+            <Back />
+          </i>
+          <input type='text' name='queryZip' id='queryZip' />
+        </header> */}
         <div className='events-filters'>
           <div
             className={`filter ${

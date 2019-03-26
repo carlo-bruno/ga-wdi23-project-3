@@ -7,10 +7,13 @@ class MapBox extends Component {
         super(props)
         this.state = {
             lat: this.props.lat,
-            lon: this.props.lon
+            lon: this.props.long
         }
     }
     render() {
+        console.log(this.props);
+        console.log("LAAATTTTT ---->", this.state.lat)
+        console.log("LOOONNNN ---->", this.state.lon)
         const Map = new ReactMapboxGl({
             accessToken: process.env.REACT_APP_MAPBOX_API_KEY,
             center: [ this.state.lon, this.state.lat],
@@ -21,7 +24,7 @@ class MapBox extends Component {
             <Map
               height='200px'
               style='mapbox://styles/garrettmoore/cjtou2gc86i4l1fnhxx633gtf'
-              zoom={[10]}
+              zoom={[11]}
               center={[this.state.lon, this.state.lat]}
               containerStyle={{height: "40em"}}>
               <Marker
