@@ -12,6 +12,10 @@ const LandingPage = (props) => {
         <h3>
           Get in the know. You have the power to change the world.
         </h3>
+        <br />
+        <p> New User? No Problem.
+          <a href='/signup'> Sign Up!</a>
+          </p>
       </section>
       <Login liftToken={props.liftToken} />
     </div>
