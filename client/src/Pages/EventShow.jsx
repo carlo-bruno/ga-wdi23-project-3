@@ -81,9 +81,6 @@ const EventShow = (props) => {
         </a>
       </header>
       {content}
-      {/* Mapbox goes here */}
-
-      {/* <MapBox /> */}
     </div>
   );
 };

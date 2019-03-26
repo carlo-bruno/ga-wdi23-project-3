@@ -173,7 +173,9 @@ class App extends Component {
 
           <Route
             path='/office/:name'
-            render={(props) => <OfficeShow />}
+            render={(props) => (
+              <OfficeShow office={this.state.office} {...props} />
+            )}
           />
 
           <Route path='/elections' component={Elections} />
