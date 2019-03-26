@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import EventCard from '../Components/EventCard';
 import { ReactComponent as Back } from '../images/chevron-left-solid.svg';
-import axios from 'axios';
 
 class Events extends Component {
   constructor(props) {
@@ -9,9 +8,9 @@ class Events extends Component {
 
     this.state = {
       filter: 'all',
-      zip: '',
+      zip: ''
     };
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -19,16 +18,16 @@ class Events extends Component {
       events: this.props.events
     });
   }
-  
+
   changeFilter = (filter) => {
     this.setState({ filter });
   };
 
   handleChange(e) {
-    console.log("HANDLE CHANGEEEE")
+    console.log('HANDLE CHANGEEEE');
     this.setState({
       zip: e.target.value
-    })
+    });
   }
 
   render() {
@@ -37,7 +36,7 @@ class Events extends Component {
         ? this.props.events
         : this.props.saved;
     let cards = display.map((event, i) => {
-      console.log(event.name)
+      console.log(event.name);
       return <EventCard key={i} event={event} />;
     });
 
@@ -47,15 +46,18 @@ class Events extends Component {
           <i onClick={() => this.props.history.goBack()}>
             <Back />
           </i>
-            <input
+          <input
             onChange={this.handleChange}
-              type='text'
-              name='queryZip'
-              id='queryZip'
-              placeholder='zip code'
-              value={this.state.zip}
-            />
-            <button onClick={() => this.props.getEvents(this.state.zip)}>Search</button>
+            type='text'
+            name='queryZip'
+            id='queryZip'
+            placeholder='zip code'
+            value={this.state.zip}
+          />
+          <button
+            onClick={() => this.props.getEvents(this.state.zip)}>
+            Search
+          </button>
         </header>
         <div className='events-filters'>
           <div
