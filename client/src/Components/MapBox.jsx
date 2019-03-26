@@ -6,8 +6,8 @@ class MapBox extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            lat: 47.59809,
-            lon: -122.33097
+            lat: this.props.lat,
+            lon: this.props.lon
         }
     }
     render() {
@@ -19,6 +19,7 @@ class MapBox extends Component {
             <>
             <h1>MAP</h1>
             <Map
+              height='200px'
               style='mapbox://styles/garrettmoore/cjtou2gc86i4l1fnhxx633gtf'
               zoom={[10]}
               center={[this.state.lon, this.state.lat]}

@@ -7,11 +7,12 @@ import { ReactComponent as Contact } from '../images/address-book-regular.svg';
 import { ReactComponent as BookmarkR } from '../images/bookmark-regular.svg';
 import { ReactComponent as BookmarkS } from '../images/bookmark-solid.svg';
 
-// import MapBox from '../Components/MapBox';
+import MapBox from '../Components/MapBox';
 
 const EventShow = (props) => {
-  let content = <p>No Data Found</p>;
 
+  let content = <p>No Data Found</p>;
+  
   if (props.events.length > 0) {
     let showEvent = props.events.find((event) => {
       return event.id === parseInt(props.match.params.id);
@@ -23,7 +24,9 @@ const EventShow = (props) => {
       venue,
       street_address,
       start_time,
-      description
+      description,
+      lat,
+      lon
     } = showEvent;
 
     let date = moment(start_time).format('dddd, MMMM D, YYYY');
@@ -63,6 +66,7 @@ const EventShow = (props) => {
         <div className='description-box'>
           <p>{description}</p>
         </div>
+        <MapBox lat={showEvent.lat} long={showEvent.lon}/>
       </section>
     );
   }
@@ -79,6 +83,7 @@ const EventShow = (props) => {
       </header>
       {content}
       {/* Mapbox goes here */}
+      
       {/* <MapBox /> */}
     </div>
   );
