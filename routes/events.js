@@ -42,7 +42,10 @@ router.get('/', (req, res) => {
               event_url: event.event_url,
               lat: event.venue.lat,
               lon: event.venue.lon,
-              description: event.description
+              description: event.description.replace(
+                /(<([^>]+)>)/gi,
+                '\n'
+              )
             };
             return meetup;
           });
@@ -70,7 +73,7 @@ router.get('/', (req, res) => {
             event_url: event.event_info_url,
             lat: event.latitude,
             lon: event.longitude,
-            description: event.event_desription_agenda
+            description: event.event_description_agenda
           };
           return council;
         });
@@ -79,7 +82,18 @@ router.get('/', (req, res) => {
           .concat(councils, outreaches)
           .filter(
             (event) => Date.now() < event.start_time.getTime()
-          );
+          )
+          .sort((a, b) => {
+            return a.start_time > b.start_time
+              ? 1
+              : a.start_time < b.start_time
+              ? -1
+              : 0;
+          });
+
+        allData.forEach((event, i) => {
+          Object.assign(event, { id: i });
+        });
 
         res.json({
           events: allData

@@ -1,8 +1,9 @@
 import React from 'react';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 const EventCard = (props) => {
-  let { event_name, venue, start_time } = props.event;
+  let { event_name, venue, start_time, id } = props.event;
   let month = moment(start_time)
     .format('MMM')
     .toUpperCase();
@@ -16,9 +17,11 @@ const EventCard = (props) => {
         <p>{date}</p>
       </div>
       <div className='info-box'>
-        <h4>{event_name}</h4>
+        <Link to={`/events/${id}`}>
+          <h4>{event_name}</h4>
+        </Link>
         <p>
-          <span>{time}</span> <span>{venue}</span>
+          <span>{time}</span> &bull; <span>{venue}</span>
         </p>
       </div>
       <div className='save-box'>

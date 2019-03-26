@@ -149,6 +149,11 @@
   justify-content: center;
 }
 
+.EventCard .info-box p {
+  font-size: 0.9rem;
+  color: #333333;
+}
+
 .EventCard .save-box {
   width: 10%;
   display: flex;
