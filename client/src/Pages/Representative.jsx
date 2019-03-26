@@ -1,4 +1,6 @@
 import React from 'react';
+import InOffice from './InOffice';
+
 
 const Representative = (props) => {
   return (

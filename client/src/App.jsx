@@ -139,24 +139,24 @@ class App extends Component {
       </>
     );
 
-    // if (user) {
-    //   contents = (
-    //     <>
-    //       <p>you are logged in</p>
-    //       <Route
-    //         exact
-    //         path='/profile'
-    //         render={(props) => (
-    //           <Profile
-    //             user={user}
-    //             logout={this.logout}
-    //             {...props}
-    //           />
-    //         )}
-    //       />
-    //     </>
-    //   );
-    // }
+    if (user) {
+      contents = (
+        <>
+          <p>you are logged in</p>
+          {/* <Route
+            exact
+            path='/profile'
+            render={(props) => (
+              <Profile
+                user={user}
+                logout={this.logout}
+                {...props}
+              />
+            )} */}
+          />
+        </>
+      );
+    }
 
     return (
       <div className='App'>
