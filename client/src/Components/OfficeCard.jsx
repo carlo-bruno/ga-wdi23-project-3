@@ -7,7 +7,7 @@ const OfficeCard = (props) => {
     
     return (
         <>
-        <img src={props.img} />
+        <img src={props.img} width='200px' height='200px' />
         <p>{props.name}</p>
         <p>{props.title}</p>
         </>
