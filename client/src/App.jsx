@@ -81,6 +81,15 @@ class App extends Component {
       this.setState({ events: response.data.events });
     });
   }
+  
+  getEvents = (zip) => {
+    let url = `/events/${zip}`;
+    axios.get(url).then((res) => {
+      this.setState({
+        events: res.data.events 
+      }) 
+    })
+  }
 
   render() {
     let user = this.state.user;
@@ -103,6 +112,7 @@ class App extends Component {
             <Events
               events={this.state.events}
               saved={this.state.saved}
+              getEvents={this.getEvents}
               {...props}
             />
           )}
