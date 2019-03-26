@@ -1,4 +1,8 @@
 import React from 'react';
+<<<<<<< HEAD
+import { city } from '../data/office';
+
+=======
 import OfficeCard from '../Components/OfficeCard'
 import {city, county} from '../data/office'
 
@@ -35,5 +39,5 @@ const InOffice = (props) => {
     </div>
   );
 };
+>>>>>>> 22da874e415c60967ffb6f7071d26462e86426bb
 
-export default InOffice;

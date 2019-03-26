@@ -244,3 +244,7 @@ export const county = [{
     email: 'sheriff@kingcounty.gov'
 }]
 
+<<<<<<< HEAD:office.js
+module.export = office;
+=======
+>>>>>>> 22da874e415c60967ffb6f7071d26462e86426bb:client/src/data/office.js
