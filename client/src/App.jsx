@@ -12,10 +12,9 @@ import Signup from './Pages/Signup';
 import UpdateProfile from './Pages/UpdateProfile';
 import Events from './Pages/Events';
 import EventShow from './Pages/EventShow';
-// InOffice
-import Representative from './Pages/Representative';
-import Elections from './Pages/Elections';
 import InOffice from './Pages/InOffice';
+import OfficeShow from './Pages/OfficeShow';
+import Elections from './Pages/Elections';
 
 class App extends Component {
   constructor(props) {
@@ -146,7 +145,7 @@ class App extends Component {
 
           <Route
             path='/office/show'
-            render={() => <Representative />}
+            render={() => <OfficeShow />}
           />
 
           <Route path='/elections' component={Elections} />

@@ -10,9 +10,8 @@ import { ReactComponent as BookmarkS } from '../images/bookmark-solid.svg';
 import MapBox from '../Components/MapBox';
 
 const EventShow = (props) => {
-
   let content = <p>No Data Found</p>;
-  
+
   if (props.events.length > 0) {
     let showEvent = props.events.find((event) => {
       return event.id === parseInt(props.match.params.id);
@@ -66,7 +65,7 @@ const EventShow = (props) => {
         <div className='description-box'>
           <p>{description}</p>
         </div>
-        <MapBox lat={showEvent.lat} long={showEvent.lon}/>
+        <MapBox lat={lat} long={lon} />
       </section>
     );
   }
@@ -83,7 +82,7 @@ const EventShow = (props) => {
       </header>
       {content}
       {/* Mapbox goes here */}
-      
+
       {/* <MapBox /> */}
     </div>
   );
