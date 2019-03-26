@@ -1,13 +1,36 @@
 import React from 'react';
+import moment from 'moment';
+import { ReactComponent as Back } from '../images/chevron-left-solid.svg';
 import { ReactComponent as Clock } from '../images/clock-regular.svg';
 import { ReactComponent as Marker } from '../images/map-marker-alt-solid.svg';
 import { ReactComponent as Contact } from '../images/address-book-regular.svg';
-// import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
+import { ReactComponent as BookmarkR } from '../images/bookmark-regular.svg';
+import { ReactComponent as BookmarkS } from '../images/bookmark-solid.svg';
+
+// import MapBox from '../Components/MapBox';
 
 const EventShow = (props) => {
-  let { event_name, venue, street_address } = props.event;
-  return (
-    <div className='EventShow'>
+  let content = <p>No Data Found</p>;
+
+  if (props.events.length > 0) {
+    let showEvent = props.events.find((event) => {
+      return event.id === parseInt(props.match.params.id);
+    });
+
+    let {
+      event_name,
+      event_url,
+      venue,
+      street_address,
+      start_time,
+      description
+    } = showEvent;
+
+    let date = moment(start_time).format('dddd, MMMM D, YYYY');
+    let fromNow = moment(start_time).fromNow();
+    let time = moment(start_time).format('h:mm A');
+
+    content = (
       <section>
         <div className='title-box'>
           <h2>{event_name}</h2>
@@ -16,9 +39,9 @@ const EventShow = (props) => {
         <div className='date-box'>
           <Clock />
           <div>
-            <p>Saturday, April 20, 2019</p>
-            <p>2 days from now</p>
-            <p>Start Time: 3:00 PM</p>
+            <p>{date}</p>
+            <p>{fromNow}</p>
+            <p>Start Time: {time}</p>
           </div>
         </div>
 
@@ -26,28 +49,37 @@ const EventShow = (props) => {
           <Marker />
           <div>
             <p>{venue}</p>
-            <p>600 4th Avenue, Seattle WA</p>
+            <p>{street_address}</p>
           </div>
         </div>
 
         <div className='contact-box'>
           <Contact />
           <div>
-            <p>links: www.example.com</p>
-            <p>phone: 123-321-1212</p>
+            <a href={event_url}>More Information</a>
           </div>
         </div>
 
         <div className='description-box'>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing
-            elit. Totam dolor sapiente voluptatibus, ex voluptate
-            cupiditate sit commodi ab corporis quisquam est
-            architecto quo porro error consequuntur sequi ipsam
-            voluptatem nam.
-          </p>
+          <p>{description}</p>
         </div>
       </section>
+    );
+  }
+
+  return (
+    <div className='EventShow'>
+      <header>
+        <a onClick={() => props.history.goBack()}>
+          <Back />
+        </a>
+        <a href='/'>
+          <BookmarkR />
+        </a>
+      </header>
+      {content}
+      {/* Mapbox goes here */}
+      {/* <MapBox /> */}
     </div>
   );
 };

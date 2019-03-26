@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+const Event = require('./models/event')
 
 // Meetup API
 function getMeetUps() {
@@ -42,7 +43,10 @@ router.get('/', (req, res) => {
               event_url: event.event_url,
               lat: event.venue.lat,
               lon: event.venue.lon,
-              description: event.description
+              description: event.description.replace(
+                /(<([^>]+)>)/gi,
+                '\n'
+              )
             };
             return meetup;
           });
@@ -70,7 +74,7 @@ router.get('/', (req, res) => {
             event_url: event.event_info_url,
             lat: event.latitude,
             lon: event.longitude,
-            description: event.event_desription_agenda
+            description: event.event_description_agenda
           };
           return council;
         });
@@ -79,7 +83,18 @@ router.get('/', (req, res) => {
           .concat(councils, outreaches)
           .filter(
             (event) => Date.now() < event.start_time.getTime()
-          );
+          )
+          .sort((a, b) => {
+            return a.start_time > b.start_time
+              ? 1
+              : a.start_time < b.start_time
+              ? -1
+              : 0;
+          });
+
+        allData.forEach((event, i) => {
+          Object.assign(event, { id: i });
+        });
 
         res.json({
           events: allData
@@ -87,6 +102,21 @@ router.get('/', (req, res) => {
       })
     )
     .catch((err) => res.json({ err }));
+});
+
+router.post('/',  (req, res) => {
+  let event = new Event({
+    _id: req.body._id,
+      time: req.body.time,
+			date: req.body.date,
+			location: req.body.location,
+			title: req.body.title,
+			description: req.body.description,
+			usernotes: req.body.usernotes
+  });
+  event.save( (err, doc) => {
+    res.json(doc);
+  })
 });
 
 module.exports = router;

@@ -10,7 +10,7 @@ const LandingPage = (props) => {
           Be <span className='brand-font'>Citizenly</span>.
         </h1>
         <h3>
-          Get in the know. You have the power to change the world. 
+          Get in the know. You have the power to change the world.
         </h3>
         <br />
         <p> New User? No Problem.
@@ -18,7 +18,6 @@ const LandingPage = (props) => {
           </p>
       </section>
       <Login liftToken={props.liftToken} />
-      <hr />
     </div>
   );
 };
