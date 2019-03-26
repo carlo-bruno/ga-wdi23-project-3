@@ -1,4 +1,4 @@
-let city = [{
+export const city = [{
     name: 'Jenny A. Durkan',
     title: 'Mayor',
     img: 'http://www.seattle.gov/images/shared/contacts/durkan.jpg',
@@ -243,3 +243,5 @@ let county = [{
     phone: '(206) 296-4155',
     email: 'sheriff@kingcounty.gov'
 }]
+
+module.export = office;

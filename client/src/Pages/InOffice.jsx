@@ -1,17 +1,4 @@
 import React from 'react';
+import { city } from '../data/office';
 
-const InOffice = (props) => {
-  return (
-    <div>
-      {
-        //
-        // OfficeCard
-        // OfficeCard
-        // OfficeCard
-        //
-      }
-    </div>
-  );
-};
 
-export default InOffice;
