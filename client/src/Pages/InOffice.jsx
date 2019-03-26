@@ -28,8 +28,12 @@ const InOffice = (props) => {
 
   return (
     <div className='InOffice'>
-      {cityReps}
-      {countyReps}
+      <section>
+        <h2>Seattle City Council:</h2>
+        {cityReps}
+        <h2>King County Council:</h2>
+        {countyReps}
+      </section>
     </div>
   );
 };

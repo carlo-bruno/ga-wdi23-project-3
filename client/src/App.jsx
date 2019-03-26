@@ -84,6 +84,7 @@ class App extends Component {
 
   render() {
     let user = this.state.user;
+
     let home = (
       <Route
         exact
@@ -139,7 +140,7 @@ class App extends Component {
 
           <Route
             path='/profile/update'
-            render={() => <UpdateProfile user={user ? user : ''} />}
+            render={() => <UpdateProfile user={user} />}
           />
 
           <Route
@@ -170,7 +171,7 @@ class App extends Component {
           <Route path='/elections' component={Elections} />
         </main>
 
-        <MenuBar />
+        <MenuBar user={this.state.user} />
       </div>
     );
   }
