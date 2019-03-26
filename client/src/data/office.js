@@ -135,7 +135,7 @@ export const city = [{
     twitter: 'https://twitter.com/seamunicourt?lang=en'
 }]
 
-let county = [{
+export const county = [{
     name: 'Dow Constantine',
     title: 'King County Executive',
     img: 'https://www.kingcounty.gov/~/media/elected/portal/elected-exec-lg.ashx?la=en',
@@ -244,4 +244,7 @@ let county = [{
     email: 'sheriff@kingcounty.gov'
 }]
 
+<<<<<<< HEAD:office.js
 module.export = office;
+=======
+>>>>>>> 22da874e415c60967ffb6f7071d26462e86426bb:client/src/data/office.js
