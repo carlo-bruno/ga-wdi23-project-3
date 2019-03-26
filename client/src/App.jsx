@@ -85,84 +85,72 @@ class App extends Component {
 
   render() {
     let user = this.state.user;
-    let contents = (
-      <>
-        <Route
-          exact
-          path='/'
-          render={() => (
-            <LandingPage liftToken={this.liftTokenToState} />
-          )}
-        />
-
-        <Route
-          exact
-          path='/signup'
-          render={(props) => (
-            <Signup liftToken={this.liftTokenToState} />
-          )}
-        />
-
-        <Route
-          path='/profile/update'
-          render={() => <UpdateProfile user={user ? user : ''} />}
-        />
-
-        <Route
-          exact
-          path='/events'
-          render={(props) => (
-            <Events
-              events={this.state.events}
-              saved={this.state.saved}
-              {...props}
-            />
-          )}
-        />
-
-        <Route
-          path='/events/:id'
-          render={(props) => (
-            <EventShow events={this.state.events} {...props} />
-          )}
-        />
-        <Route exact path='/office' render={() => <InOffice />} />
-
-        <Route
-          path='/office/show'
-          render={() => <Representative />}
-        />
-
-        <Route path='/elections' component={Elections} />
-
-        <Route path='/signup' render={() => <Signup />} />
-      </>
-    );
-
-    // if (user) {
-    //   contents = (
-    //     <>
-    //       <p>you are logged in</p>
-    //       <Route
-    //         exact
-    //         path='/profile'
-    //         render={(props) => (
-    //           <Profile
-    //             user={user}
-    //             logout={this.logout}
-    //             {...props}
-    //           />
-    //         )}
-    //       />
-    //     </>
-    //   );
-    // }
 
     return (
       <div className='App'>
         <Header />
 
-        <main className='Content'>{contents}</main>
+        <main className='Content'>
+          <Route
+            exact
+            path='/'
+            render={() => (
+              <LandingPage liftToken={this.liftTokenToState} />
+            )}
+          />
+
+          <Route
+            exact
+            path='/signup'
+            render={(props) => (
+              <Signup liftToken={this.liftTokenToState} />
+            )}
+          />
+
+          <Route
+            exact
+            path='/profile'
+            render={(props) => (
+              <Profile
+                user={user}
+                logout={this.logout}
+                {...props}
+              />
+            )}
+          />
+
+          <Route
+            path='/profile/update'
+            render={() => <UpdateProfile user={user ? user : ''} />}
+          />
+
+          <Route
+            exact
+            path='/events'
+            render={(props) => (
+              <Events
+                events={this.state.events}
+                saved={this.state.saved}
+                {...props}
+              />
+            )}
+          />
+
+          <Route
+            path='/events/:id'
+            render={(props) => (
+              <EventShow events={this.state.events} {...props} />
+            )}
+          />
+          <Route exact path='/office' render={() => <InOffice />} />
+
+          <Route
+            path='/office/show'
+            render={() => <Representative />}
+          />
+
+          <Route path='/elections' component={Elections} />
+        </main>
 
         <MenuBar />
       </div>
