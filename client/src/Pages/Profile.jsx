@@ -24,9 +24,11 @@ const Profile = (props) => {
         <p>98111</p>
       </section>
 
-      <button className='saved-btn'>
-        Your Saved Events &rarr;
-      </button>
+      <Link to='/events'>
+        <button className='saved-btn'>
+          Your Saved Events &rarr;
+        </button>
+      </Link>
       <button
         className='logout-btn'
         onClick={() => {
