@@ -170,3 +170,46 @@
   border: 2px solid black;
   text-align: justify;
 }
+
+/* Office Card ------------------------------------ */
+
+.OfficeCard {
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 0 10px;
+  margin-bottom: 0.8rem;
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.OfficeCard .rep-info {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.OfficeCard h3,
+.OfficeCard p {
+  margin: 0;
+}
+
+.OfficeCard .image-box {
+  width: 120px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.OfficeCard img {
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

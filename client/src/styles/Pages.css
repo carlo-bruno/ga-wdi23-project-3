@@ -315,6 +315,12 @@ green:
   word-wrap: break-word;
 }
 
+/* InOffice Page ---------------------------------- */
+.InOffice {
+  height: 82vh;
+  overflow-y: scroll;
+}
+
 /* Representative Page ---------------------------- */
 .Representative {
   height: 100%;
