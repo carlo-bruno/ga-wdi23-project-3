@@ -32,12 +32,19 @@ class Events extends Component {
 
     return (
       <div className='Events'>
-        {/* <header>
+        <header>
           <i onClick={() => this.props.history.goBack()}>
             <Back />
           </i>
-          <input type='text' name='queryZip' id='queryZip' />
-        </header> */}
+          <form action=''>
+            <input
+              type='text'
+              name='queryZip'
+              id='queryZip'
+              placeholder='zip code'
+            />
+          </form>
+        </header>
         <div className='events-filters'>
           <div
             className={`filter ${

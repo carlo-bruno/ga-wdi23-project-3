@@ -1,37 +1,35 @@
 import React from 'react';
-import OfficeCard from '../Components/OfficeCard'
-import {city, county} from '../data/office'
 
-
+import OfficeCard from '../Components/OfficeCard';
+import { city, county } from '../data/office';
 
 const InOffice = (props) => {
+  let cityReps = city.map((rep, i) => {
+    return (
+      <OfficeCard
+        key={i}
+        name={rep.name}
+        title={rep.title}
+        img={rep.img}
+      />
+    );
+  });
 
-
-
-  let cityReps = city.map(rep => {
-     return(<div> 
-      <OfficeCard name={rep.name} title={rep.title} img={rep.img} />
-    </div>)
-
-  })
-
-  let countyReps = county.map(rep => {
-    return(<div> 
-      <OfficeCard name={rep.name} title={rep.title} img={rep.img}/>
-   </div>)
-
- })
+  let countyReps = county.map((rep, i) => {
+    return (
+      <OfficeCard
+        key={i}
+        name={rep.name}
+        title={rep.title}
+        img={rep.img}
+      />
+    );
+  });
 
   return (
-    <div>
-    {cityReps}
-    {countyReps}
-      {
-        // OfficeCard
-        // OfficeCard
-        // OfficeCard
-        //
-      }
+    <div className='InOffice'>
+      {cityReps}
+      {countyReps}
     </div>
   );
 };
