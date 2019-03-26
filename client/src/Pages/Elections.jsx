@@ -3,6 +3,11 @@ import React from 'react';
 const Elections = (props) => {
     return (
         <div className='Elections'>
+            <div className='services'>
+                <h2>Services and Information</h2>
+                <p>Learn about your city, county, and state.</p>
+                <p>We serve as an online resource for election information and voting services in your community.</p>
+            </div>
 
             <div className='election-link'>
                 <h2>Elections</h2>
