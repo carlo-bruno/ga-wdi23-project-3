@@ -162,10 +162,8 @@ class App extends Component {
           />
           <Route exact path='/office' render={() => <InOffice />} />
 
-          <Route
-            path='/office/show'
-            render={() => <OfficeShow />}
-          />
+          <Route path='/office/show' component= {OfficeShow}/>
+        
 
           <Route path='/elections' component={Elections} />
         </main>
