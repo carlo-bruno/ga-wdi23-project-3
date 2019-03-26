@@ -70,9 +70,9 @@ const EventShow = (props) => {
   return (
     <div className='EventShow'>
       <header>
-        <a onClick={() => props.history.goBack()}>
+        <i onClick={() => props.history.goBack()}>
           <Back />
-        </a>
+        </i>
         <a href='/'>
           <BookmarkR />
         </a>
