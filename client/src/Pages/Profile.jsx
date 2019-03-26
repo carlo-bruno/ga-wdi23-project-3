@@ -4,6 +4,54 @@ import { ReactComponent as Back } from '../images/chevron-left-solid.svg';
 import { ReactComponent as Cog } from '../images/cog-solid.svg';
 
 const Profile = (props) => {
+  let profile = (
+    <p style={{ marginTop: '10vh' }}>You have to be logged in.</p>
+  );
+
+  let buttons = (
+    <>
+      <Link to='/'>
+        <button className='btn'>Log In &rarr;</button>
+      </Link>
+      <Link to='/signup'>
+        <button className='btn'>Sign Up &rarr;</button>
+      </Link>
+    </>
+  );
+
+  if (props.user) {
+    profile = (
+      <>
+        <div className='profile-img'>
+          <img src='http://placekitten.com/g/150/150' alt='' />
+        </div>
+        <h2>{props.user.name}</h2>
+        <p>
+          {props.user.city}, {props.user.state}
+        </p>
+        <p>{props.user.zip}</p>
+      </>
+    );
+
+    buttons = (
+      <>
+        <Link to='/events'>
+          <button className='saved-btn'>
+            Your Saved Events &rarr;
+          </button>
+        </Link>
+        <button
+          className='logout-btn'
+          onClick={() => {
+            props.logout();
+            props.history.push('/');
+          }}>
+          Log Out &rarr;
+        </button>
+      </>
+    );
+  }
+
   return (
     <div className='Profile'>
       <section>
@@ -11,32 +59,16 @@ const Profile = (props) => {
           <i onClick={() => props.history.goBack()}>
             <Back />
           </i>
-          <Link to='/profile/update'>
-            <Cog />
-          </Link>
+          {props.user && (
+            <Link to='/profile/update'>
+              <Cog />
+            </Link>
+          )}
         </header>
 
-        <div className='profile-img'>
-          <img src='http://placekitten.com/g/150/150' alt='' />
-        </div>
-        <h2>First Last</h2>
-        <p>Seattle, WA</p>
-        <p>98111</p>
+        {profile}
       </section>
-
-      <Link to='/events'>
-        <button className='saved-btn'>
-          Your Saved Events &rarr;
-        </button>
-      </Link>
-      <button
-        className='logout-btn'
-        onClick={() => {
-          props.logout();
-          props.history.push('/');
-        }}>
-        Log Out &rarr;
-      </button>
+      {buttons}
     </div>
   );
 };

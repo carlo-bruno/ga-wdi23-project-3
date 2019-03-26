@@ -8,22 +8,6 @@ import { ReactComponent as User } from '../images/user-alt-solid.svg';
 
 class MenuBar extends Component {
   render() {
-    let logged;
-
-    if (this.props.user) {
-      logged = (
-        <Link to='/profile'>
-          <User />
-        </Link>
-      );
-    } else {
-      logged = (
-        <Link to='/'>
-          <User />
-        </Link>
-      );
-    }
-
     return (
       <div className='MenuBar'>
         <Link to='/events'>
@@ -35,7 +19,9 @@ class MenuBar extends Component {
         <Link to='/elections'>
           <Vote />
         </Link>
-        {logged}
+        <Link to='/profile'>
+          <User />
+        </Link>
       </div>
     );
   }

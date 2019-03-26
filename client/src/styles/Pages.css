@@ -41,6 +41,7 @@ green:
 .Profile section {
   background-color: #008457;
   padding-bottom: 20px;
+  min-height: 35vh;
 }
 
 .Profile .profile-img {
@@ -79,7 +80,8 @@ green:
   width: 80%;
 }
 
-.Profile .saved-btn {
+.Profile .saved-btn,
+.Profile .btn {
   border: 3px solid #008457;
   background-color: #059d6a;
 }

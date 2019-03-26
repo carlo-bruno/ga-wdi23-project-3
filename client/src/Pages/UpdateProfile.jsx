@@ -27,9 +27,17 @@ class UpdateProfile extends Component {
           <div
             className={`cloudinary ${
               this.state.isHidden ? 'hidden' : ''
-              }`}>
-            <form id="photo-upload" encType="multipart/form-data" method='POST' action='/UpdateProfile'>
-              <input type='hidden' name='userId' value={this.props.user ? this.props.user._id : ''} />
+            }`}>
+            <form
+              id='photo-upload'
+              encType='multipart/form-data'
+              method='POST'
+              action='/UpdateProfile'>
+              <input
+                type='hidden'
+                name='userId'
+                value={this.props.user ? this.props.user._id : ''}
+              />
               <input type='file' name='myFile' />
               <input type='submit' className='btn btn-primary' />
             </form>
@@ -37,7 +45,7 @@ class UpdateProfile extends Component {
         </div>
 
         <section className='profile-form'>
-          <form>
+          <form action='/UpdateProfile'>
             <input type='text' name='city' placeholder='City' />
             <input type='text' name='state' placeholder='State' />
             <input type='text' name='zip' placeholder='Zip Code' />
