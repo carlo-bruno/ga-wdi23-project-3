@@ -2,7 +2,7 @@ export const city = [
   {
     name: 'Jenny A. Durkan',
     title: 'Mayor',
-    img: 'http://www.seattle.gov/images/shared/contacts/durkan.jpg',
+    img: 'https://costechtalk-wpengine.netdna-ssl.com/wp-content/uploads/2018/05/Jenny-Durkan-Headshot-600x709.png',
     phone: '206-684-4000',
     email: 'jenny.durkan@seattle.gov',
     fb: 'https://www.facebook.com/MayorJennyDurkan/',
