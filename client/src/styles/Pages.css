@@ -70,14 +70,23 @@ green:
 }
 
 .Profile button {
-  margin-top: 8vh;
-  border: 3px solid #008457;
-  background-color: #059d6a;
+  margin-top: 5vh;
   color: #ffffff;
   border-radius: 6px;
   font-size: 1.2rem;
   font-weight: 600;
-  padding: 3% 15%;
+  padding: 3%;
+  width: 80%;
+}
+
+.Profile .saved-btn {
+  border: 3px solid #008457;
+  background-color: #059d6a;
+}
+
+.Profile .logout-btn {
+  border: 3px solid #c70000;
+  background-color: #de4034;
 }
 
 /* Update Profile Page ---------------------------- */
