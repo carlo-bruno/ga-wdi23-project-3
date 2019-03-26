@@ -136,13 +136,13 @@ class App extends Component {
       </>
     );
 
-    if (user) {
-      contents = (
-        <>
-          <UpdateProfile user={user ? user : ''} />
-        </>
-      );
-    }
+    // if (user) {
+    //   contents = (
+    //     <>
+    //       <UpdateProfile user={user ? user : ''} />
+    //     </>
+    //   );
+    // }
 
     return (
       <div className='App'>
