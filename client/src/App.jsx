@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import './App.css';
 
 import MenuBar from './Components/MenuBar';
@@ -15,6 +15,7 @@ import EventShow from './Pages/EventShow';
 // InOffice
 import Representative from './Pages/Representative';
 import Elections from './Pages/Elections';
+import InOffice from './Pages/InOffice';
 
 class App extends Component {
   constructor(props) {
@@ -96,9 +97,9 @@ class App extends Component {
 
         <Route
           exact
-          path='/profile'
+          path='/signup'
           render={(props) => (
-            <Profile user={user} logout={this.logout} {...props} />
+            <Signup liftToken={this.liftTokenToState} />
           )}
         />
 
@@ -110,10 +111,11 @@ class App extends Component {
         <Route
           exact
           path='/events'
-          render={() => (
+          render={(props) => (
             <Events
               events={this.state.events}
               saved={this.state.saved}
+              {...props}
             />
           )}
         />
@@ -124,6 +126,7 @@ class App extends Component {
             <EventShow events={this.state.events} {...props} />
           )}
         />
+        <Route exact path='/office' render={() => <InOffice />} />
 
         <Route
           path='/office/show'
@@ -139,7 +142,18 @@ class App extends Component {
     // if (user) {
     //   contents = (
     //     <>
-    //       <UpdateProfile user={user ? user : ''} />
+    //       <p>you are logged in</p>
+    //       <Route
+    //         exact
+    //         path='/profile'
+    //         render={(props) => (
+    //           <Profile
+    //             user={user}
+    //             logout={this.logout}
+    //             {...props}
+    //           />
+    //         )}
+    //       />
     //     </>
     //   );
     // }

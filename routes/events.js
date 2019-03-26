@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
-const Event = require('./models/event')
+const Event = require('../models/event');
 
 // Meetup API
 function getMeetUps() {
@@ -104,19 +104,19 @@ router.get('/', (req, res) => {
     .catch((err) => res.json({ err }));
 });
 
-router.post('/',  (req, res) => {
+router.post('/', (req, res) => {
   let event = new Event({
     _id: req.body._id,
-      time: req.body.time,
-			date: req.body.date,
-			location: req.body.location,
-			title: req.body.title,
-			description: req.body.description,
-			usernotes: req.body.usernotes
+    time: req.body.time,
+    date: req.body.date,
+    location: req.body.location,
+    title: req.body.title,
+    description: req.body.description,
+    usernotes: req.body.usernotes
   });
-  event.save( (err, doc) => {
+  event.save((err, doc) => {
     res.json(doc);
-  })
+  });
 });
 
 module.exports = router;
