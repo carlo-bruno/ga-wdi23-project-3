@@ -9,7 +9,7 @@ const OfficeShow = (props) => {
       return rep.name === props.match.params.name;
     });
 
-  let { name, title, twitter, fb, img, url } = showRep;
+  let { name, email, phone, flickr, title, twitter, fb, img } = showRep;
 
   return (
     <div className='OfficeShow'>
@@ -24,11 +24,11 @@ const OfficeShow = (props) => {
           <a href={twitter}>twitter</a> | <a href={fb}>facebook</a>{' '}
           |
         </div>
-      </section>
-      <section className='rep-links'>
-        <h3>
-          <a href='/'>Website</a>
-        </h3>
+        <section>
+          <p>{email}</p>
+          <p><a href='tel:{phone}'>{phone}</a></p>
+        
+        </section>
       </section>
     </div>
   );
