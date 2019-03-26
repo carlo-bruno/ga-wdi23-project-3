@@ -16,6 +16,8 @@ import InOffice from './Pages/InOffice';
 import OfficeShow from './Pages/OfficeShow';
 import Elections from './Pages/Elections';
 
+import { city, county } from './data/office';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +26,8 @@ class App extends Component {
       user: null,
       errorMessage: '',
       events: [],
-      saved: []
+      saved: [],
+      office: { city, county }
     };
   }
 
@@ -161,11 +164,16 @@ class App extends Component {
               <EventShow events={this.state.events} {...props} />
             )}
           />
-          <Route exact path='/office' render={() => <InOffice />} />
 
           <Route
-            path='/office/show'
-            render={() => <OfficeShow />}
+            exact
+            path='/office'
+            render={() => <InOffice office={this.state.office} />}
+          />
+
+          <Route
+            path='/office/:name'
+            render={(props) => <OfficeShow />}
           />
 
           <Route path='/elections' component={Elections} />
