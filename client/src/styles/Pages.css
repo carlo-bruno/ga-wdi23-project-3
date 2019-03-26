@@ -323,6 +323,11 @@ green:
   overflow-y: scroll;
 }
 
+.InOffice a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* OfficeShow Page ---------------------------- */
 .OfficeShow {
   height: 100%;
@@ -344,6 +349,10 @@ green:
   text-decoration: none;
   padding: 5px;
   line-height: 30px;
+}
+
+.OfficeShow a {
+  text-decoration: none;
 }
 
 /* Election Page ---------------------------------- */
