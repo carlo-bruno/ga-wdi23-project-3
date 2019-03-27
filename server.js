@@ -33,6 +33,7 @@ const parser = multer({ storage: storage });
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(express.static(__dirname + '/client/build'));
 
 const loginLimiter = new RateLimit({
   windowMs: 5 * 60 * 1000, // 5mins
@@ -48,6 +49,9 @@ const signupLimiter = new RateLimit({
   message: 'Maximum accounts created. Please try again later'
 });
 
+// mongoose.connect(process.env.MONGODB_URI, {
+//   useNewUrlParser: true
+// });
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true
 });
@@ -109,6 +113,10 @@ app.use(
   }),
   require('./routes/locked')
 );
+
+app.get('*', function(req, res) {
+  res.sendFile(__dirname + '/client/build/index.html');
+});
 
 app.listen(port, () =>
   console.log(`🔥 Listening on port ${port}...`)
