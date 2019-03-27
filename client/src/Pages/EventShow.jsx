@@ -78,7 +78,7 @@ const EventShow = (props) => {
           <Back />
         </i>
 
-        {showEvent && (
+        {props.user && showEvent && (
           <form action='/savedevents' method='POST'>
             <input
               type='hidden'
