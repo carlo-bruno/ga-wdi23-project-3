@@ -11,7 +11,7 @@ class Signup extends Component {
       message: ''
     };
   }
-
+  
   handleNameChange = (e) => {
     this.setState({
       name: e.target.value
@@ -46,33 +46,34 @@ class Signup extends Component {
       password: e.target.value
     });
   };
-
+  
   handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('/auth/signup', {
-        name: this.state.name,
-        email: this.state.email,
-        password: this.state.password,
-        city: this.state.city,
-        state: this.state.state,
-        zipcode: this.state.zipcode
-      })
-      .then((res) => {
-        if (res.data.type === 'error') {
-          console.log('Error: ', res.data.message);
-          this.setState({ message: res.data.message });
-        } else {
-          localStorage.setItem('mernToken', res.data.token);
-          this.props.liftToken(res.data);
-        }
-      })
-      .catch((err) => {
-        this.setState({
-          message:
-            'Maximum accounts exceeded. Please try again later.'
-        });
+    .post('/auth/signup', {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password,
+      city: this.state.city,
+      state: this.state.state,
+      zipcode: this.state.zipcode
+      
+    })
+    .then((res) => {
+      if (res.data.type === 'error') {
+        console.log('Error: ', res.data.message);
+        this.setState({ message: res.data.message });
+      } else {
+        localStorage.setItem('mernToken', res.data.token);
+        this.props.liftToken(res.data);
+      }
+    })
+    .catch((err) => {
+      this.setState({
+        message:
+        'Maximum accounts exceeded. Please try again later.'
       });
+    });
   };
 
   render() {
@@ -136,17 +137,15 @@ class Signup extends Component {
             name='password'
             placeholder='at least 8 characters'
           />
-
           <input
-            className='button'
+            className='btn'
             type='submit'
             value='Sign up!'
-
           />
         </form>
       </div>
     );
-  }
+  } 
 }
 
 export default Signup;
