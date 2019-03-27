@@ -94,9 +94,21 @@ class App extends Component {
     });
   };
 
+  getSavedEvents = (userId) => {
+    console.log('getting saved events');
+    let url = `/events/saved/${userId}`;
+    axios.get(url).then((res) => {
+      this.setState({
+        saved: res.data.saved
+      });
+    });
+  };
+
   saveEvent = (event, userId) => {
     console.log(event, userId);
-    axios.post('/events/saved', { event, userId });
+    axios.post('/events/saved', { event, userId }).then(() => {
+      this.getSavedEvents(userId);
+    });
   };
 
   render() {
@@ -168,6 +180,7 @@ class App extends Component {
               <Events
                 events={this.state.events}
                 saved={this.state.saved}
+                getEvents={this.getEvents}
                 {...props}
               />
             )}
