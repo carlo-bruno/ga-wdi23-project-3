@@ -171,4 +171,13 @@ router.post('/saved', (req, res) => {
   });
 });
 
+router.get('/saved/:userId', (req, res) => {
+  //Mongoose query here
+  console.log("IN AXIOS GETTTTTT, BABAY!")
+  Event.find({userId: req.params.userId}, (err, docs )=> {
+    console.log(docs)
+  })
+  // 
+})
+
 module.exports = router;

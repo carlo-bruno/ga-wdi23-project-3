@@ -22,31 +22,25 @@ const userSchema = new Schema({
     maxlength: [99, 'Email must be between 5 and 99 characters']
   },
   city: {
+
     type: String,
     required: [false],
     minlength: [3],
     maxlength: [99]
   },
   state: {
-    type: String,
-    required: [false],
-    minlength: [2, 'Please enter in two characters'],
-    maxlength: [2, 'Please enter in two characters']
+    type: String
   },
+
   zipcode: {
     type: String,
     required: [false]
+
   },
   socialMedia: {
-    type: String,
-    required: [false],
-    minlength: [0, 'Please enter a valid link'],
-    maxlength: [99, 'Please enter a valid link']
-  },
-  image: {
     type: String
   },
-  image_id: {
+  image: {
     type: String
   }
 });
