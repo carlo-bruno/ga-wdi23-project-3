@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import EventCard from '../Components/EventCard';
-import { ReactComponent as Back } from '../images/chevron-left-solid.svg';
 
 class Events extends Component {
   constructor(props) {
@@ -36,16 +35,12 @@ class Events extends Component {
         ? this.props.events
         : this.props.saved;
     let cards = display.map((event, i) => {
-      console.log(event.name);
       return <EventCard key={i} event={event} />;
     });
 
     return (
       <div className='Events'>
         <header>
-          <i onClick={() => this.props.history.goBack()}>
-            <Back />
-          </i>
           <input
             onChange={this.handleChange}
             type='text'

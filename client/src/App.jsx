@@ -94,6 +94,11 @@ class App extends Component {
     });
   };
 
+  saveEvent = (event, userId) => {
+    console.log(event, userId);
+    axios.post('/events/saved', { event, userId });
+  };
+
   render() {
     let user = this.state.user;
 
@@ -174,6 +179,7 @@ class App extends Component {
               <EventShow
                 events={this.state.events}
                 user={user}
+                saveEvent={this.saveEvent}
                 {...props}
               />
             )}

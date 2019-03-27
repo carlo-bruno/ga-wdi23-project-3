@@ -80,22 +80,13 @@ const EventShow = (props) => {
           <Back />
         </i>
 
-        {showEvent && (
-          <form action='/events' method='POST'>
-            <input
-              type='hidden'
-              name='eventInfo'
-              value={showEvent}
-            />
-            <input
-              type='hidden'
-              name='userId'
-              value={props.user._id}
-            />
-            <button type='submit'>
-              <BookmarkR />
-            </button>
-          </form>
+        {props.user && showEvent && (
+          <button
+            onClick={() => {
+              props.saveEvent(showEvent, props.user._id);
+            }}>
+            <BookmarkR />
+          </button>
         )}
       </header>
       {content}
