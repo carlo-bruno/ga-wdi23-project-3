@@ -24,33 +24,18 @@ const userSchema = new Schema({
     maxlength: [99, 'Email must be between 5 and 99 characters']
   },
   city: {
-    type: String,
-    required: [false],
-    minlength: [3 ],
-    maxlength: [99]
+    type: String
   },
   state: {
-    type: String,
-    required: [false],
-    minlength: [2, 'Please enter in two characters'],
-    maxlength: [2, 'Please enter in two characters']
+    type: String
   },
   dob: {
-    type: Number,
-    required: [false],
-    minlength: [10, 'Please enter in DD/MM/YYYY format'],
-    maxlength: [10, 'Please enter in DD/MM/YYYY format']
+    type: Number
   },
   socialMedia: {
-    type: String,
-    required: [false],
-    minlength: [0, 'Please enter a valid link'],
-    maxlength: [99, 'Please enter a valid link']
+    type: String
   },
   image: {
-    type: String
-  }, 
-  image_id: {
     type: String
   }
 });
