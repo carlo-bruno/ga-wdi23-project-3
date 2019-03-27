@@ -30,14 +30,16 @@ const eventSchema = new Schema ({
 eventSchema.set('toObject', {
   transform: function(doc, ret, options) {
     let returnJson = {
-      _id: ret._id,
-      time: ret.time,
-			date: ret.date,
-			location: ret.location,
-			title: ret.title,
+      user_id: ret.user._id,
 			description: ret.description,
-			usernotes: ret.usernotes
-    };
+			title: ret.event_name,
+      url: ret.event_url,
+      venue: ret.venue,
+      address: ret.street_address,
+      time: ret.start_time,
+      lat: ret.lat,
+      lon: ret.lon
+    }
     return returnJson;
   }
 });
