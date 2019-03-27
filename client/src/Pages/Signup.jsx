@@ -53,7 +53,10 @@ class Signup extends Component {
       .post('/auth/signup', {
         name: this.state.name,
         email: this.state.email,
-        password: this.state.password
+        password: this.state.password,
+        city: this.state.city,
+        state: this.state.state,
+        zipcode: this.state.zipcode
       })
       .then((res) => {
         if (res.data.type === 'error') {
@@ -103,7 +106,7 @@ class Signup extends Component {
           onChange={this.handle}
           type='text'
           name='stateName'
-          placeholder='Washington State'
+          placeholder='WA'
           />
 
           <label htmlFor='zipcode'>Zipcode:</label>
@@ -138,6 +141,7 @@ class Signup extends Component {
             className='button'
             type='submit'
             value='Sign up!'
+
           />
         </form>
       </div>
