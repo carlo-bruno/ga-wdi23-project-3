@@ -81,7 +81,7 @@ class App extends Component {
     this.checkForLocalToken();
     // get events
     axios
-      .get('/events')
+      .get('/api/events')
       .then((response) => {
         this.setState({ events: response.data.events });
       })
@@ -93,7 +93,7 @@ class App extends Component {
   }
 
   getEvents = (zip) => {
-    let url = `/events/${zip}`;
+    let url = `/api/events/${zip}`;
     axios.get(url).then((res) => {
       this.setState({
         events: res.data.events
@@ -103,7 +103,7 @@ class App extends Component {
 
   getSavedEvents = (userId) => {
     console.log('getting saved events');
-    let url = `/events/saved/${userId}`;
+    let url = `/api/events/saved/${userId}`;
     axios.get(url).then((res) => {
       console.log(res);
       res.data.forEach((savedEvent, i) => {
@@ -117,7 +117,7 @@ class App extends Component {
 
   saveEvent = (event, userId) => {
     console.log(event, userId);
-    axios.post('/events/saved', { event, userId }).then(() => {
+    axios.post('/api/events/saved', { event, userId }).then(() => {
       this.getSavedEvents(userId);
     });
   };
