@@ -11,9 +11,9 @@ import MapBox from '../Components/MapBox';
 
 const EventShow = (props) => {
   let content = <p>No Data Found</p>;
-
+  let showEvent = null;
   if (props.events.length > 0) {
-    let showEvent = props.events.find((event) => {
+    showEvent = props.events.find((event) => {
       return event.id === parseInt(props.match.params.id);
     });
 
@@ -76,9 +76,15 @@ const EventShow = (props) => {
         <i onClick={() => props.history.goBack()}>
           <Back />
         </i>
-        <a href='/'>
-          <BookmarkR />
-        </a>
+
+        {props.user && showEvent && (
+          <button
+            onClick={() => {
+              props.saveEvent(showEvent, props.user._id);
+            }}>
+            <BookmarkR />
+          </button>
+        )}
       </header>
       {content}
     </div>

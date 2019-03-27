@@ -3,6 +3,9 @@ Colors:
 green: 
 #008457
 #059d6a
+red:
+#c70000;
+#de4034;
 */
 
 /* Landing Page ----------------------------------- */
@@ -44,16 +47,12 @@ green:
   min-height: 35vh;
 }
 
-.Profile .profile-img {
-  padding-bottom: 10px;
-}
-
 .Profile header {
-  height: 40px;
+  height: 0px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  padding: 10px 20px;
+  padding: 20px 20px 0;
 }
 
 .Profile svg {
@@ -63,6 +62,15 @@ green:
 
 .Profile svg path {
   fill: #ffffff;
+}
+
+.Profile .profile-img {
+  padding-bottom: 10px;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 0 auto;
 }
 
 .Profile .profile-img img {
@@ -117,6 +125,7 @@ green:
 
 .UpdateProfile .cloudinary {
   width: 100%;
+  max-width: 425px;
   position: absolute;
   z-index: 10;
   opacity: 1;
@@ -137,8 +146,10 @@ green:
 }
 
 #photo-upload input {
-  width: 70%;
+  width: 80%;
   padding: 0;
+  background-color: #ffffff33;
+  border-radius: 5px;
 }
 
 .UpdateProfile form {
@@ -146,6 +157,7 @@ green:
   display: flex;
   flex-direction: column;
   padding: 10px;
+  border-radius: 5px;
 }
 
 .UpdateProfile input {
@@ -162,6 +174,8 @@ green:
   border: 1px solid black;
   margin: 0 auto;
   height: 30px;
+  background-color: #dddddd;
+  border-radius: 5px;
 }
 
 /* Events Page ------------------------------------ */
@@ -267,6 +281,14 @@ green:
   padding: 10px 20px;
   color: #ffffff;
 }
+
+.EventShow form button {
+  background: none;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
 .EventShow section {
   height: 91%;
   padding: 20px;
@@ -321,6 +343,7 @@ green:
 .InOffice {
   height: 82vh;
   overflow-y: scroll;
+  padding: 0 20px;
 }
 
 .InOffice a {
@@ -333,26 +356,68 @@ green:
   height: 100%;
 }
 
-.OfficeShow .rep-profile-img img {
-  border-radius: 50%;
-}
-
 .OfficeShow header {
-  height: 30px;
-  background-color: gray;
+  background-color: #008457;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  color: #ffffff;
 }
 
-.OfficeShow header a {
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 1.1em;
-  text-decoration: none;
-  padding: 5px;
-  line-height: 30px;
+.OfficeShow svg {
+  width: 25px;
+  height: 25px;
+}
+
+.OfficeShow h2,
+.OfficeShow h3 {
+  margin: 0 0 10px;
 }
 
 .OfficeShow a {
   text-decoration: none;
+}
+
+.OfficeShow .rep-profile-img {
+  border-radius: 50%;
+  width: 240px;
+  height: 240px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 15px auto;
+}
+
+.OfficeShow .rep-profile-img img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.OfficeShow .rep-contact {
+  max-width: 70%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.OfficeShow .social {
+  margin-bottom: 10px;
+}
+
+.OfficeShow .social img {
+  padding: 5px;
+  margin: 0 10px;
+}
+
+.OfficeShow .rep-contact svg {
+  margin-right: 15px;
+}
+
+.OfficeShow .rep-contact path {
+  fill: #008457;
 }
 
 /* Election Page ---------------------------------- */

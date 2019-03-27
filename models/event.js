@@ -2,26 +2,35 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
 
-const eventSchema = new Schema ({
-  time: {
-    type: Number,
-  },
-  date: {
+const eventSchema = new Schema({
+  userId: {
     type: String
   },
-  location: {
+  start_time: {
     type: String
   },
-  title: {
+  lat: {
+    type: Number
+  },
+  lon: {
+    type: Number
+  },
+  street_address: {
+    type: String
+  },
+  venue: {
     type: String
   },
   description: {
     type: String
   },
-  usernotes: {
+  event_name: {
+    type: String
+  },
+  event_url: {
     type: String
   }
-})
+});
 
 /** Returns an object already parsed from JSON, no password
  * @param doc -> document, record, row to be converted
@@ -30,13 +39,15 @@ const eventSchema = new Schema ({
 eventSchema.set('toObject', {
   transform: function(doc, ret, options) {
     let returnJson = {
-      _id: ret._id,
-      time: ret.time,
-			date: ret.date,
-			location: ret.location,
-			title: ret.title,
-			description: ret.description,
-			usernotes: ret.usernotes
+      userId: ret.userId,
+      description: ret.description,
+      event_name: ret.event_name,
+      event_url: ret.event_url,
+      venue: ret.venue,
+      street_address: ret.street_address,
+      start_time: ret.start_time,
+      lat: ret.lat,
+      lon: ret.lon
     };
     return returnJson;
   }

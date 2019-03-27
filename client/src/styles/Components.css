@@ -182,9 +182,10 @@
   align-items: stretch;
   padding: 0 10px;
   margin-bottom: 0.8rem;
-  height: 150px;
+  height: 140px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .OfficeCard .rep-info {
@@ -202,6 +203,7 @@
 
 .OfficeCard .image-box {
   width: 120px;
+  height: 140px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -212,4 +214,5 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+  object-fit: cover;
 }

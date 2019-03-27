@@ -2,7 +2,8 @@ export const city = [
   {
     name: 'Jenny A. Durkan',
     title: 'Mayor',
-    img: 'https://costechtalk-wpengine.netdna-ssl.com/wp-content/uploads/2018/05/Jenny-Durkan-Headshot-600x709.png',
+    img:
+      'https://costechtalk-wpengine.netdna-ssl.com/wp-content/uploads/2018/05/Jenny-Durkan-Headshot-600x709.png',
     phone: '206-684-4000',
     email: 'jenny.durkan@seattle.gov',
     fb: 'https://www.facebook.com/MayorJennyDurkan/',
@@ -212,7 +213,7 @@ export const county = [
     name: 'Kathy Lambert',
     title: 'Councilmember | District 3',
     img:
-      'https://www.kingcounty.gov/~/media/Lambert/images/Lambert-Bio-Photo.ashx#xA;?la=en',
+      'http://www.redmond-reporter.com/wp-content/uploads/2016/10/1063redmondLambert.web_.jpg',
     phone: '(206) 477-1003',
     email: 'kathy.lambert@kingcounty.gov',
     fb: 'https://www.facebook.com/lambert.kathy',
