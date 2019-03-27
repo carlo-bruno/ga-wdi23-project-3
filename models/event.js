@@ -3,22 +3,31 @@ const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
 
 const eventSchema = new Schema ({
-  time: {
-    type: Number,
+  userId: {
+    type: String,
   },
-  date: {
+  start_time: {
+    type: String,
+  },
+  lat: {
+    type: Number
+  },
+  long: {
+    type: Number
+  },
+  street_address: {
     type: String
   },
-  location: {
-    type: String
-  },
-  title: {
+  venue: {
     type: String
   },
   description: {
     type: String
   },
-  usernotes: {
+  event_name: {
+    type: String
+  },
+  event_url: {
     type: String
   }
 })
@@ -30,13 +39,13 @@ const eventSchema = new Schema ({
 eventSchema.set('toObject', {
   transform: function(doc, ret, options) {
     let returnJson = {
-      user_id: ret.user._id,
+      userId: ret.userId,
 			description: ret.description,
-			title: ret.event_name,
-      url: ret.event_url,
+			event_name: ret.event_name,
+      event_url: ret.event_url,
       venue: ret.venue,
-      address: ret.street_address,
-      time: ret.start_time,
+      street_address: ret.street_address,
+      start_time: ret.start_time,
       lat: ret.lat,
       lon: ret.lon
     }
