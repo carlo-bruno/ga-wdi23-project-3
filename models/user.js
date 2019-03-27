@@ -2,9 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
 
-
 const userSchema = new Schema({
-  
   name: {
     type: String,
     required: [true, 'You must enter a name'],
@@ -24,13 +22,20 @@ const userSchema = new Schema({
     maxlength: [99, 'Email must be between 5 and 99 characters']
   },
   city: {
-    type: String
+
+    type: String,
+    required: [false],
+    minlength: [3],
+    maxlength: [99]
   },
   state: {
     type: String
   },
-  dob: {
-    type: Number
+
+  zipcode: {
+    type: String,
+    required: [false]
+
   },
   socialMedia: {
     type: String
@@ -49,7 +54,11 @@ userSchema.set('toObject', {
     let returnJson = {
       _id: ret._id,
       email: ret.email,
-      name: ret.name
+      name: ret.name,
+      city: ret.city,
+      state: ret.state,
+      zipcode: ret.zipcode,
+      image: ret.image
     };
     return returnJson;
   }
