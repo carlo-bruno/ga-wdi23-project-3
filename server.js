@@ -9,7 +9,7 @@ const Event = require('./models/event');
 const multer = require('multer');
 const upload = multer({ dest: './uploads/' });
 const cloudinary = require('cloudinary');
-const cloudinaryStorage = require("multer-storage-cloudinary");
+const cloudinaryStorage = require('multer-storage-cloudinary');
 require('dotenv').config();
 
 const app = express();
@@ -26,11 +26,10 @@ const storage = cloudinaryStorage({
   cloudinary: cloudinary,
   folder: 'Citizenly',
   allowedFormats: ['jpg', 'png'],
-  transformation: [{ width: 500, height: 500, crop: 'limit' }]
+  transformation: [{ width: 200, height: 200, crop: 'limit' }]
 });
 
 const parser = multer({ storage: storage });
-
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -61,9 +60,6 @@ db.on('error', (error) => {
   console.log(`Database error:\n${error}`);
 });
 
-
-
-
 app.get('/UpdateProfile', (req, res) => {
   db.user
     .findOne({
@@ -84,15 +80,20 @@ app.post('/UpdateProfile', parser.single('myFile'), (req, res) => {
   image.id = req.file.public_id;
 
   // Update user model with image url
-  User.findByIdAndUpdate( req.body.userId, {
-    $set: {image: req.file.secure_url}
-  }, {new: true}, (err, user) => {
-    if (err) console.log('ERROR: =====> ', err)
-    //Save to DB
-    user.save( () => {
-      res.json(user)
-    })
-  }).catch(err => console.log(err))
+  User.findByIdAndUpdate(
+    req.body.userId,
+    {
+      $set: { image: req.file.secure_url }
+    },
+    { new: true },
+    (err, user) => {
+      if (err) console.log('ERROR: =====> ', err);
+      //Save to DB
+      user.save(() => {
+        res.json(user);
+      });
+    }
+  ).catch((err) => console.log(err));
 });
 
 app.use(helmet());

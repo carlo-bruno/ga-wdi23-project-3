@@ -23,7 +23,6 @@ class Events extends Component {
   };
 
   handleChange(e) {
-    console.log('HANDLE CHANGEEEE');
     this.setState({
       zip: e.target.value
     });
