@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ReactComponent as Back } from '../images/chevron-left-solid.svg';
 import { ReactComponent as Cog } from '../images/cog-solid.svg';
 
 const Profile = (props) => {
@@ -23,7 +22,7 @@ const Profile = (props) => {
     profile = (
       <>
         <div className='profile-img'>
-          <img src='http://placekitten.com/g/150/150' alt='' />
+          <img src='http://placekitten.com/g/200/200' alt='' />
         </div>
         <h2>{props.user.name}</h2>
         <p>
@@ -56,9 +55,6 @@ const Profile = (props) => {
     <div className='Profile'>
       <section>
         <header>
-          <i onClick={() => props.history.goBack()}>
-            <Back />
-          </i>
           {props.user && (
             <Link to='/profile/update'>
               <Cog />
