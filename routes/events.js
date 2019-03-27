@@ -156,7 +156,7 @@ router.get('/:zip', (req, res) => {
     .catch((err) => res.json({ err }));
 });
 
-router.post('/', (req, res) => {
+router.post('/saved', (req, res) => {
   let event = new Event({
     _id: req.body._id,
     time: req.body.time,

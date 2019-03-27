@@ -5,13 +5,15 @@ import { ReactComponent as Clock } from '../images/clock-regular.svg';
 import { ReactComponent as Marker } from '../images/map-marker-alt-solid.svg';
 import { ReactComponent as Contact } from '../images/address-book-regular.svg';
 import { ReactComponent as BookmarkR } from '../images/bookmark-regular.svg';
+import axios from 'axios';
 // import { ReactComponent as BookmarkS } from '../images/bookmark-solid.svg';
 
 import MapBox from '../Components/MapBox';
+import axios from 'axios';
 
 const EventShow = (props) => {
-  let content = <p>No Data Found</p>;
 
+  let content = <p>No Data Found</p>;
   let showEvent = null;
   if (props.events.length > 0) {
     showEvent = props.events.find((event) => {
@@ -79,7 +81,7 @@ const EventShow = (props) => {
         </i>
 
         {showEvent && (
-          <form action='/savedevents' method='POST'>
+          <form action='/events' method='POST'>
             <input
               type='hidden'
               name='eventInfo'
