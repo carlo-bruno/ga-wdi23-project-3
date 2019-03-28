@@ -2,9 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
 
-
 const userSchema = new Schema({
-  
   name: {
     type: String,
     required: [true, 'You must enter a name'],
@@ -24,33 +22,25 @@ const userSchema = new Schema({
     maxlength: [99, 'Email must be between 5 and 99 characters']
   },
   city: {
+
     type: String,
     required: [false],
-    minlength: [3 ],
+    minlength: [3],
     maxlength: [99]
   },
   state: {
-    type: String,
-    required: [false],
-    minlength: [2, 'Please enter in two characters'],
-    maxlength: [2, 'Please enter in two characters']
+    type: String
   },
-  dob: {
-    type: Number,
-    required: [false],
-    minlength: [10, 'Please enter in DD/MM/YYYY format'],
-    maxlength: [10, 'Please enter in DD/MM/YYYY format']
+
+  zipcode: {
+    type: String,
+    required: [false]
+
   },
   socialMedia: {
-    type: String,
-    required: [false],
-    minlength: [0, 'Please enter a valid link'],
-    maxlength: [99, 'Please enter a valid link']
+    type: String
   },
   image: {
-    type: String
-  }, 
-  image_id: {
     type: String
   }
 });
@@ -64,7 +54,11 @@ userSchema.set('toObject', {
     let returnJson = {
       _id: ret._id,
       email: ret.email,
-      name: ret.name
+      name: ret.name,
+      city: ret.city,
+      state: ret.state,
+      zipcode: ret.zipcode,
+      image: ret.image
     };
     return returnJson;
   }

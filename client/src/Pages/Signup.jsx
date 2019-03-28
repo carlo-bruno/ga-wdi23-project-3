@@ -8,6 +8,9 @@ class Signup extends Component {
       name: '',
       email: '',
       password: '',
+      city: '',
+      state: '',
+      zipcode: '',
       message: ''
     };
   }
@@ -29,9 +32,10 @@ class Signup extends Component {
       zipcode: e.target.value
     });
   };
+  
   handleStateChange = (e) => {
-  this.setState({
-    stateName: e.target.value
+    this.setState({
+      state: e.target.value
     });
   };
 
@@ -50,28 +54,29 @@ class Signup extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     axios
-    .post('/auth/signup', {
-      name: this.state.name,
-      email: this.state.email,
-      password: this.state.password,
-      city: this.state.city,
-      state: this.state.state,
-      zipcode: this.state.zipcode
-      
-    })
-    .then((res) => {
-      if (res.data.type === 'error') {
-        console.log('Error: ', res.data.message);
-        this.setState({ message: res.data.message });
-      } else {
-        localStorage.setItem('mernToken', res.data.token);
-        this.props.liftToken(res.data);
-      }
-    })
-    .catch((err) => {
-      this.setState({
-        message:
-        'Maximum accounts exceeded. Please try again later.'
+      .post('/auth/signup', {
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password,
+        city: this.state.city,
+        state: this.state.state,
+        zipcode: this.state.zipcode
+      })
+      .then((res) => {
+        if (res.data.type === 'error') {
+          console.log('Error: ', res.data.message);
+          this.setState({ message: res.data.message });
+        } else {
+          localStorage.setItem('mernToken', res.data.token);
+          this.props.liftToken(res.data);
+        }
+      })
+      .catch((err) => {
+        this.setState({
+          message:
+            'Maximum accounts exceeded. Please try again later.'
+        });
+
       });
     });
   };
@@ -93,33 +98,34 @@ class Signup extends Component {
           />
 
           <label htmlFor='city'>City:</label>
-          <input 
-          value={this.state.city}
-          onChange={this.handle}
-          type='text'
-          name='city'
-          placeholder='Seattle'
+          <input
+            value={this.state.city}
+            onChange={this.handleCityChange}
+            type='text'
+            name='city'
+            placeholder='Seattle'
           />
 
           <label htmlFor='stateName'>State:</label>
-          <input 
-          value={this.state.stateName}
-          onChange={this.handle}
-          type='text'
-          name='stateName'
-          placeholder='WA'
+          <input
+            value={this.state.stateName}
+            onChange={this.handleStateChange}
+            type='text'
+            name='stateName'
+            placeholder='WA'
+            pattern='[A-Za-z]{2}'
           />
 
           <label htmlFor='zipcode'>Zipcode:</label>
-          <input 
-          value={this.state.zipcode}
-          onChange={this.handle}
-          type='text'
-          name='zipcode'
-          pattern= '[0-9]*'
-          placeholder='55404'
+          <input
+            value={this.state.zipcode}
+            onChange={this.handleZipcodeChange}
+            type='text'
+            name='zipcode'
+            pattern='[0-9]*'
+            placeholder='55404'
           />
-          
+
           <label htmlFor='email'>Email:</label>
           <input
             value={this.state.email}

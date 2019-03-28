@@ -106,6 +106,45 @@ router.get('/', (req, res) => {
 router.get('/:zip', (req, res) => {
   let url = `https://api.meetup.com/2/open_events/?category=13&key=${
     process.env.MEETUP_API_KEY
+<<<<<<< HEAD
+  }&zip=${req.params.zip}`
+  axios.get(url).then(function(meetupData) {
+        var meetups = meetupData.data.results
+          .filter((event) => event.venue && event.description)
+          .map((event) => {
+            let meetup = {
+              event_name: event.name ,
+              venue: event.venue.name ,
+              street_address: event.venue.address_1 ,
+              start_time: new Date(event.time) ,
+              event_url: event.event_url ,
+              lat: event.venue.lat ,
+              lon: event.venue.lon ,
+              description: event.description.replace(
+                /(<([^>]+)>)/gi,
+                '\n'
+              )
+            };
+            return meetup;
+          });
+
+        let allData = meetups
+          .filter(
+            (event) => Date.now() < event.start_time.getTime()
+          )
+          .sort((a, b) => {
+            return a.start_time > b.start_time
+              ? 1
+              : a.start_time < b.start_time
+              ? -1
+              : 0;
+          });
+        allData.forEach((event, i) => {
+          Object.assign(event, { id: i });
+        });
+        res.json({
+          events: allData
+=======
   }&zip=${req.params.zip}`;
   axios
     .get(url)
@@ -141,6 +180,7 @@ router.get('/:zip', (req, res) => {
             : a.start_time < b.start_time
             ? -1
             : 0;
+>>>>>>> 60d6f7606808fae1e2a9c116873f79cbddcfb76d
         });
       console.log('ALLLLLLL DATA', allData);
       allData.forEach((event, i) => {
@@ -166,9 +206,27 @@ router.post('/saved', (req, res) => {
     lon: req.body.event.lon,
     street_address: req.body.event.street_address
   });
-  event.save((err, doc) => {
-    res.json(doc);
+
+  Event.findOne( {event_url: event.event_url}, (err, savedEvent)=> {
+  console.log(savedEvent)
+    if (!savedEvent) {
+      event.save((err, doc) => {
+        res.json(doc);
+      })
+    } else {
+      console.log("ALREADY IN DB")
+    }
+  })
+})
+
+router.get('/saved/:userId', (req, res) => {
+  //Mongoose query here
+  console.log('IN AXIOS GETTTTTT, BABAY!');
+  Event.find({ userId: req.params.userId }, (err, docs) => {
+    console.log(docs);
+    res.json(docs);
   });
+  //
 });
 
 module.exports = router;

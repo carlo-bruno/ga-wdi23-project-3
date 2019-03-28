@@ -24,9 +24,6 @@ const EventCard = (props) => {
           <span>{time}</span> &bull; <span>{venue}</span>
         </p>
       </div>
-      <div className='save-box'>
-        <b>+</b>
-      </div>
     </div>
   );
 };

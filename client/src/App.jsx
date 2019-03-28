@@ -80,13 +80,20 @@ class App extends Component {
   componentDidMount() {
     this.checkForLocalToken();
     // get events
-    axios.get('/events').then((response) => {
-      this.setState({ events: response.data.events });
-    });
+    axios
+      .get('/api/events')
+      .then((response) => {
+        this.setState({ events: response.data.events });
+      })
+      .then(() => {
+        if (this.state.user) {
+          this.getSavedEvents(this.state.user._id);
+        }
+      });
   }
 
   getEvents = (zip) => {
-    let url = `/events/${zip}`;
+    let url = `/api/events/${zip}`;
     axios.get(url).then((res) => {
       this.setState({
         events: res.data.events
@@ -94,9 +101,25 @@ class App extends Component {
     });
   };
 
+  getSavedEvents = (userId) => {
+    console.log('getting saved events');
+    let url = `/api/events/saved/${userId}`;
+    axios.get(url).then((res) => {
+      console.log(res);
+      res.data.forEach((savedEvent, i) => {
+        Object.assign(savedEvent, { id: `s${i}` });
+      });
+      this.setState({
+        saved: res.data
+      });
+    });
+  };
+
   saveEvent = (event, userId) => {
     console.log(event, userId);
-    axios.post('/events/saved', { event, userId });
+    axios.post('/api/events/saved', { event, userId }).then(() => {
+      this.getSavedEvents(userId);
+    });
   };
 
   render() {
@@ -168,6 +191,7 @@ class App extends Component {
               <Events
                 events={this.state.events}
                 saved={this.state.saved}
+                getEvents={this.getEvents}
                 {...props}
               />
             )}
@@ -178,6 +202,7 @@ class App extends Component {
             render={(props) => (
               <EventShow
                 events={this.state.events}
+                saved={this.state.saved}
                 user={user}
                 saveEvent={this.saveEvent}
                 {...props}

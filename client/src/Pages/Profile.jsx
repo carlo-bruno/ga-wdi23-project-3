@@ -23,12 +23,20 @@ const Profile = (props) => {
     profile = (
       <>
         <div className='profile-img'>
-          <img src='http://placekitten.com/g/150/150' alt='' />
+          {(props.user.image && (
+            <img src={props.user.image} alt='user-image' />
+          )) || (
+            <img
+              src='http://placekitten.com/g/200/200'
+              alt='placeholder'
+            />
+          )}
+
         </div>
         <h2>{props.user.name}</h2>
-        <p>
+        <h3>
           {props.user.city}, {props.user.state}
-        </p>
+        </h3>
         <p>{props.user.zip}</p>
       </>
     );

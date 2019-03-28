@@ -97,8 +97,7 @@ red:
 }
 
 .Profile .profile-img img {
-  border-radius: 50%;
-  overflow: hidden;
+  height: 100%;
 }
 
 .Profile button {
