@@ -10,14 +10,22 @@ red:
 
 /* Landing Page ----------------------------------- */
 .LandingPage {
-  height: 100%;
-  padding: 0 20px;
+  background-repeat: no-repeat;
+  background-image: url('https://images.unsplash.com/photo-1489859861281-ad37cdcb2cfe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');
+  background-position: top;
+  background-size: auto;
 }
-
 .LandingPage h2 {
   margin: 0;
+  color: white;
 }
-
+.LandingPage #login {
+  color: black;
+  padding: 10px;
+}
+.LandingPage input {
+  padding: 5px;
+}
 .LandingPage section {
   height: 50vh;
   display: flex;
@@ -25,6 +33,16 @@ red:
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  color: white;
+}
+.LandingPage p {
+  color: black;
+  margin: auto;
+}
+
+.LandingPage a {
+  text-decoration: none;
+  color: rgb(133, 13, 13);
 }
 
 /* Profile Page ----------------------------------- */
@@ -38,13 +56,18 @@ red:
 }
 
 .Profile p {
-  margin: 0;
+  color: white;
 }
 
 .Profile section {
+  margin: auto;
+  padding: 15px;
+  min-height: 50vh;
   background-color: #008457;
-  padding-bottom: 20px;
-  min-height: 35vh;
+  
+}
+.Profile content{
+  background-size: cover;
 }
 
 .Profile header {
