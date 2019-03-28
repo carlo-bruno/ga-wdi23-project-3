@@ -148,7 +148,7 @@ export const city = [
     name: 'Anita Crawford-Willis',
     title: 'Judge',
     img:
-      'http://www.seattle.gov/Images/Departments/Court/Crawford-Willis%20Headshot(0).jpg',
+      'https://www.seattle.gov/Images/Departments/Court/Crawford-Willis%20Headshot(0).jpg',
     phone: '206-684-5600',
     twitter: 'https://twitter.com/seamunicourt?lang=en'
   },
@@ -156,7 +156,7 @@ export const city = [
     name: 'Adam Eisenberg',
     title: 'Judge',
     img:
-      'http://www.seattle.gov/Images/Departments/Court/20190108-Eisenberg.jpg',
+      'https://www.seattle.gov/Images/Departments/Court/20190108-Eisenberg.jpg',
     phone: '206-684-5600',
     twitter: 'https://twitter.com/seamunicourt?lang=en'
   },
@@ -164,7 +164,7 @@ export const city = [
     name: 'Willie J. Gregory',
     title: 'Judge',
     img:
-      'http://www.seattle.gov/Images/Departments/Court/20190108-Gregory.jpg',
+      'https://www.seattle.gov/Images/Departments/Court/20190108-Gregory.jpg',
     phone: '206-684-5600',
     twitter: 'https://twitter.com/seamunicourt?lang=en'
   },
@@ -172,7 +172,7 @@ export const city = [
     name: 'Damon Shadid',
     title: 'Judge',
     img:
-      'http://www.seattle.gov/Images/Departments/Court/20190108-Shadid.jpg',
+      'https://www.seattle.gov/Images/Departments/Court/20190108-Shadid.jpg',
     phone: '206-684-5600',
     twitter: 'https://twitter.com/seamunicourt?lang=en'
   }
@@ -213,7 +213,7 @@ export const county = [
     name: 'Kathy Lambert',
     title: 'Councilmember | District 3',
     img:
-      'http://www.redmond-reporter.com/wp-content/uploads/2016/10/1063redmondLambert.web_.jpg',
+      'https://www.redmond-reporter.com/wp-content/uploads/2016/10/1063redmondLambert.web_.jpg',
     phone: '(206) 477-1003',
     email: 'kathy.lambert@kingcounty.gov',
     fb: 'https://www.facebook.com/lambert.kathy',
