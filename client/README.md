@@ -78,7 +78,7 @@ WireFraming, Planning and Pages & Components
 
 
 ```bash
-App (Class)
+App (Class
 │
 ├─ Pages
 │  ├─ LandingPage
