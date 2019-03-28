@@ -26,7 +26,7 @@ const storage = cloudinaryStorage({
   cloudinary: cloudinary,
   folder: 'Citizenly',
   allowedFormats: ['jpg', 'png'],
-  transformation: [{ width: 500, height: 500, crop: 'limit' }]
+  transformation: [{ width: 200, height: 200, crop: 'limit' }]
 });
 
 const parser = multer({ storage: storage });
@@ -84,6 +84,17 @@ app.post('/UpdateProfile', parser.single('myFile'), (req, res) => {
   image.id = req.file.public_id;
 
   // Update user model with image url
+<<<<<<< HEAD
+  User.findByIdAndUpdate( req.body.userId, {
+    $set: {image: req.file.secure_url}
+  }, {new: true}, (err, user) => {
+    if (err) console.log('ERROR: =====> ', err)
+    //Save to DB
+    user.save( () => {
+      res.redirect('profile/update')
+    })
+  }).catch(err => console.log(err))
+=======
   User.findByIdAndUpdate(
     req.body.userId,
     {
@@ -98,6 +109,7 @@ app.post('/UpdateProfile', parser.single('myFile'), (req, res) => {
       });
     }
   ).catch((err) => console.log(err));
+>>>>>>> 60d6f7606808fae1e2a9c116873f79cbddcfb76d
 });
 
 app.use(helmet());

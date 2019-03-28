@@ -11,9 +11,7 @@ class MapBox extends Component {
         }
     }
     render() {
-        console.log(this.props);
-        console.log("LAAATTTTT ---->", this.state.lat)
-        console.log("LOOONNNN ---->", this.state.lon)
+        console.log(process.env.REACT_APP_MAPBOX_API_KEY)
         const Map = new ReactMapboxGl({
             accessToken: process.env.REACT_APP_MAPBOX_API_KEY,
             center: [ this.state.lon, this.state.lat],

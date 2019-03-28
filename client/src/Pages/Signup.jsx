@@ -32,6 +32,7 @@ class Signup extends Component {
       zipcode: e.target.value
     });
   };
+  
   handleStateChange = (e) => {
     this.setState({
       state: e.target.value
