@@ -26,7 +26,7 @@ const storage = cloudinaryStorage({
   cloudinary: cloudinary,
   folder: 'Citizenly',
   allowedFormats: ['jpg', 'png'],
-  transformation: [{ width: 500, height: 500, crop: 'limit' }]
+  transformation: [{ width: 200, height: 200, crop: 'limit' }]
 });
 
 const parser = multer({ storage: storage });
@@ -90,7 +90,7 @@ app.post('/UpdateProfile', parser.single('myFile'), (req, res) => {
     if (err) console.log('ERROR: =====> ', err)
     //Save to DB
     user.save( () => {
-      res.json(user)
+      res.redirect('profile/update')
     })
   }).catch(err => console.log(err))
 });

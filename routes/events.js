@@ -110,11 +110,9 @@ router.get('/:zip', (req, res) => {
     process.env.MEETUP_API_KEY
   }&zip=${req.params.zip}`
   axios.get(url).then(function(meetupData) {
-        console.log("IN SECOND AXIOS QUERYYYYYY")
         var meetups = meetupData.data.results
           .filter((event) => event.venue && event.description)
           .map((event) => {
-            console.log('EVENT', event)
             let meetup = {
               event_name: event.name ,
               venue: event.venue.name ,
@@ -128,11 +126,9 @@ router.get('/:zip', (req, res) => {
                 '\n'
               )
             };
-            console.log("OBJ",meetup)
             return meetup;
           });
 
-        console.log("MEETOPS", meetups)
         let allData = meetups
           .filter(
             (event) => Date.now() < event.start_time.getTime()
@@ -144,11 +140,9 @@ router.get('/:zip', (req, res) => {
               ? -1
               : 0;
           });
-        console.log('ALLLLLLL DATA', allData)
         allData.forEach((event, i) => {
           Object.assign(event, { id: i });
         });
-        console.log("KENGTH", allData.length)
         res.json({
           events: allData
         });
@@ -168,10 +162,18 @@ router.post('/saved', (req, res) => {
     lon: req.body.event.lon,
     street_address: req.body.event.street_address
   });
-  event.save((err, doc) => {
-    res.json(doc);
-  });
-});
+
+  Event.findOne( {event_url: event.event_url}, (err, savedEvent)=> {
+  console.log(savedEvent)
+    if (!savedEvent) {
+      event.save((err, doc) => {
+        res.json(doc);
+      })
+    } else {
+      console.log("ALREADY IN DB")
+    }
+  })
+})
 
 router.get('/saved/:userId', (req, res) => {
   //Mongoose query here
