@@ -1,0 +1,19 @@
+<svg width="128px" height="132px" viewBox="0 0 128 132" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <rect id="path-1" x="0" y="0" width="128" height="132" rx="20"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="#ffffff" fill-rule="evenodd">
+        <g id="Line-+-Line-+-Line-Mask">
+            <mask>
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <rect stroke="#008457" x="0.5" y="0.5" width="127" height="131" rx="20"></rect>
+            <path d="M26.5,84.5 L102.5,84.5" id="Line" stroke="#008457" stroke-width="5" stroke-linecap="square" mask="url(#mask-2)"></path>
+            <path d="M26.5,99.5 L102.5,99.5" id="Line" stroke="#008457" stroke-width="5" stroke-linecap="square" mask="url(#mask-2)"></path>
+            <path d="M26.5,114.5 L102.5,114.5" id="Line" stroke="#008457" stroke-width="5" stroke-linecap="square" mask="url(#mask-2)"></path>
+        </g>
+        <text id="C" font-family="Shrikhand-Regular, Shrikhand" font-size="75" font-style="italic" font-weight="normal" fill="#008457">
+            <tspan x="38" y="68">C</tspan>
+        </text>
+    </g>
+</svg>

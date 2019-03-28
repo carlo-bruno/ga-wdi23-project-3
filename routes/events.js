@@ -144,11 +144,9 @@ router.get('/:zip', (req, res) => {
       res.json({
         events: allData
       });
-      console.log('ALLLLLLL DATA', allData);
       allData.forEach((event, i) => {
         Object.assign(event, { id: i });
       });
-      console.log('KENGTH', allData.length);
       res.json({
         events: allData
       });
@@ -172,13 +170,12 @@ router.post('/saved', (req, res) => {
   Event.findOne(
     { event_url: event.event_url },
     (err, savedEvent) => {
-      console.log(savedEvent);
       if (!savedEvent) {
         event.save((err, doc) => {
           res.json(doc);
         });
       } else {
-        console.log('ALREADY IN DB');
+        // console.log('ALREADY IN DB');
       }
     }
   );
@@ -186,9 +183,8 @@ router.post('/saved', (req, res) => {
 
 router.get('/saved/:userId', (req, res) => {
   //Mongoose query here
-  console.log('IN AXIOS GETTTTTT, BABAY!');
+  // console.log('IN AXIOS GETTTTTT, BABAY!');
   Event.find({ userId: req.params.userId }, (err, docs) => {
-    console.log(docs);
     res.json(docs);
   });
   //

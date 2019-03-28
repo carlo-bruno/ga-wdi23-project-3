@@ -114,7 +114,6 @@ class App extends Component {
   };
 
   saveEvent = (event, userId) => {
-    console.log(event, userId);
     axios.post('/api/events/saved', { event, userId }).then(() => {
       this.getSavedEvents(userId);
     });
