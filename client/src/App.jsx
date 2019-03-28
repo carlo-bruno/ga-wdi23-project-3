@@ -102,10 +102,8 @@ class App extends Component {
   };
 
   getSavedEvents = (userId) => {
-    console.log('getting saved events');
     let url = `/api/events/saved/${userId}`;
     axios.get(url).then((res) => {
-      console.log(res);
       res.data.forEach((savedEvent, i) => {
         Object.assign(savedEvent, { id: `s${i}` });
       });
