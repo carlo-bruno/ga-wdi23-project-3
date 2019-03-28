@@ -31,7 +31,6 @@ const Profile = (props) => {
               alt='placeholder'
             />
           )}
-
         </div>
         <h2>{props.user.name}</h2>
         <h3>
@@ -64,9 +63,6 @@ const Profile = (props) => {
     <div className='Profile'>
       <section>
         <header>
-          <i onClick={() => props.history.goBack()}>
-            <Back />
-          </i>
           {props.user && (
             <Link to='/profile/update'>
               <Cog />

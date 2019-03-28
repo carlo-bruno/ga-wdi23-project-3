@@ -14,7 +14,7 @@ class Signup extends Component {
       message: ''
     };
   }
-  
+
   handleNameChange = (e) => {
     this.setState({
       name: e.target.value
@@ -32,7 +32,7 @@ class Signup extends Component {
       zipcode: e.target.value
     });
   };
-  
+
   handleStateChange = (e) => {
     this.setState({
       state: e.target.value
@@ -50,7 +50,7 @@ class Signup extends Component {
       password: e.target.value
     });
   };
-  
+
   handleSubmit = (e) => {
     e.preventDefault();
     axios
@@ -76,9 +76,7 @@ class Signup extends Component {
           message:
             'Maximum accounts exceeded. Please try again later.'
         });
-
       });
-    });
   };
 
   render() {
@@ -143,15 +141,11 @@ class Signup extends Component {
             name='password'
             placeholder='at least 8 characters'
           />
-          <input
-            className='btn'
-            type='submit'
-            value='Sign up!'
-          />
+          <input className='btn' type='submit' value='Sign up!' />
         </form>
       </div>
     );
-  } 
+  }
 }
 
 export default Signup;
