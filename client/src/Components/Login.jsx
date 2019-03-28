@@ -45,7 +45,7 @@ class Login extends Component {
   render() {
     return (
       <div className='Login'>
-        <h2>Login to your account:</h2>
+        <h2 id='login'>Login to your account:</h2>
 
         <form onSubmit={this.handleSubmit}>
           <small>{this.state.message}</small>
