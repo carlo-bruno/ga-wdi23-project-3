@@ -8,6 +8,9 @@ class Signup extends Component {
       name: '',
       email: '',
       password: '',
+      city: '',
+      state: '',
+      zipcode: '',
       message: ''
     };
   }
@@ -31,8 +34,8 @@ class Signup extends Component {
   };
   
   handleStateChange = (e) => {
-  this.setState({
-    stateName: e.target.value
+    this.setState({
+      state: e.target.value
     });
   };
 
@@ -54,7 +57,10 @@ class Signup extends Component {
       .post('/auth/signup', {
         name: this.state.name,
         email: this.state.email,
-        password: this.state.password
+        password: this.state.password,
+        city: this.state.city,
+        state: this.state.state,
+        zipcode: this.state.zipcode
       })
       .then((res) => {
         if (res.data.type === 'error') {
@@ -90,33 +96,34 @@ class Signup extends Component {
           />
 
           <label htmlFor='city'>City:</label>
-          <input 
-          value={this.state.city}
-          onChange={this.handle}
-          type='text'
-          name='city'
-          placeholder='Seattle'
+          <input
+            value={this.state.city}
+            onChange={this.handleCityChange}
+            type='text'
+            name='city'
+            placeholder='Seattle'
           />
 
           <label htmlFor='stateName'>State:</label>
-          <input 
-          value={this.state.stateName}
-          onChange={this.handle}
-          type='text'
-          name='stateName'
-          placeholder='Washington State'
+          <input
+            value={this.state.stateName}
+            onChange={this.handleStateChange}
+            type='text'
+            name='stateName'
+            placeholder='WA'
+            pattern='[A-Za-z]{2}'
           />
 
           <label htmlFor='zipcode'>Zipcode:</label>
-          <input 
-          value={this.state.zipcode}
-          onChange={this.handle}
-          type='text'
-          name='zipcode'
-          pattern= '[0-9]*'
-          placeholder='55404'
+          <input
+            value={this.state.zipcode}
+            onChange={this.handleZipcodeChange}
+            type='text'
+            name='zipcode'
+            pattern='[0-9]*'
+            placeholder='55404'
           />
-          
+
           <label htmlFor='email'>Email:</label>
           <input
             value={this.state.email}

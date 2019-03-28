@@ -8,16 +8,18 @@ import { ReactComponent as BookmarkR } from '../images/bookmark-regular.svg';
 // import { ReactComponent as BookmarkS } from '../images/bookmark-solid.svg';
 
 import MapBox from '../Components/MapBox';
-import axios from 'axios';
 
 const EventShow = (props) => {
-
   let content = <p>No Data Found</p>;
   let showEvent = null;
   if (props.events.length > 0) {
-    showEvent = props.events.find((event) => {
-      return event.id === parseInt(props.match.params.id);
-    });
+    showEvent =
+      props.events.find((event) => {
+        return event.id === parseInt(props.match.params.id);
+      }) ||
+      props.saved.find((saved) => {
+        return saved.id === props.match.params.id;
+      });
 
     let {
       event_name,

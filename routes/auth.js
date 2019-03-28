@@ -19,7 +19,10 @@ router.post('/signup', (req, res) => {
       let user = new User({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        city: req.body.city,
+        state: req.body.state,
+        zipcode: req.body.zipcode
       });
       user.save((err, user) => {
         if (err) {
@@ -34,13 +37,11 @@ router.post('/signup', (req, res) => {
             process.env.JWT_SECRET,
             { expiresIn: '24h' }
           );
-          res
-            .status(200)
-            .json({
-              type: 'success',
-              user: user.toObject(),
-              token
-            });
+          res.status(200).json({
+            type: 'success',
+            user: user.toObject(),
+            token
+          });
         }
       });
     }

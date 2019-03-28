@@ -9,7 +9,7 @@ const Event = require('./models/event');
 const multer = require('multer');
 const upload = multer({ dest: './uploads/' });
 const cloudinary = require('cloudinary');
-const cloudinaryStorage = require("multer-storage-cloudinary");
+const cloudinaryStorage = require('multer-storage-cloudinary');
 require('dotenv').config();
 
 const app = express();
@@ -31,9 +31,9 @@ const storage = cloudinaryStorage({
 
 const parser = multer({ storage: storage });
 
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(express.static(__dirname + '/client/build'));
 
 const loginLimiter = new RateLimit({
   windowMs: 5 * 60 * 1000, // 5mins
@@ -49,6 +49,9 @@ const signupLimiter = new RateLimit({
   message: 'Maximum accounts created. Please try again later'
 });
 
+// mongoose.connect(process.env.MONGODB_URI, {
+//   useNewUrlParser: true
+// });
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true
 });
@@ -60,9 +63,6 @@ db.once('open', () => {
 db.on('error', (error) => {
   console.log(`Database error:\n${error}`);
 });
-
-
-
 
 app.get('/UpdateProfile', (req, res) => {
   db.user
@@ -84,6 +84,7 @@ app.post('/UpdateProfile', parser.single('myFile'), (req, res) => {
   image.id = req.file.public_id;
 
   // Update user model with image url
+<<<<<<< HEAD
   User.findByIdAndUpdate( req.body.userId, {
     $set: {image: req.file.secure_url}
   }, {new: true}, (err, user) => {
@@ -93,6 +94,22 @@ app.post('/UpdateProfile', parser.single('myFile'), (req, res) => {
       res.redirect('profile/update')
     })
   }).catch(err => console.log(err))
+=======
+  User.findByIdAndUpdate(
+    req.body.userId,
+    {
+      $set: { image: req.file.secure_url }
+    },
+    { new: true },
+    (err, user) => {
+      if (err) console.log('ERROR: =====> ', err);
+      //Save to DB
+      user.save(() => {
+        res.json(user);
+      });
+    }
+  ).catch((err) => console.log(err));
+>>>>>>> 60d6f7606808fae1e2a9c116873f79cbddcfb76d
 });
 
 app.use(helmet());
@@ -100,7 +117,7 @@ app.use('/auth/login', loginLimiter);
 app.use('/auth/signup', signupLimiter);
 
 app.use('/auth', require('./routes/auth'));
-app.use('/events', require('./routes/events'));
+app.use('/api/events', require('./routes/events'));
 app.use(
   '/locked',
   expressJWT({ secret: process.env.JWT_SECRET }).unless({
@@ -109,8 +126,10 @@ app.use(
   require('./routes/locked')
 );
 
+app.get('*', function(req, res) {
+  res.sendFile(__dirname + '/client/build/index.html');
+});
+
 app.listen(port, () =>
   console.log(`🔥 Listening on port ${port}...`)
 );
-
-module.exports = User;
