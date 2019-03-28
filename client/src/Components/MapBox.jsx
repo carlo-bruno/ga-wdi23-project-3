@@ -11,7 +11,8 @@ class MapBox extends Component {
   }
   render() {
     const Map = new ReactMapboxGl({
-      accessToken: process.env.REACT_APP_MAPBOX_API_KEY,
+      accessToken:
+        'pk.eyJ1IjoiZ2FycmV0dG1vb3JlIiwiYSI6ImNqdG9rbThqNDAwNDI0OXFzaTBrejhwc24ifQ.-5ioP17Oh9hNK3QfqNU4kw',
       center: [this.state.lon, this.state.lat]
     });
     return (
