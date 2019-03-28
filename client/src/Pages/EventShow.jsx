@@ -4,13 +4,14 @@ import { ReactComponent as Back } from '../images/chevron-left-solid.svg';
 import { ReactComponent as Clock } from '../images/clock-regular.svg';
 import { ReactComponent as Marker } from '../images/map-marker-alt-solid.svg';
 import { ReactComponent as Contact } from '../images/address-book-regular.svg';
-import { ReactComponent as BookmarkR } from '../images/bookmark-regular.svg';
-// import { ReactComponent as BookmarkS } from '../images/bookmark-solid.svg';
+// import { ReactComponent as BookmarkR } from '../images/bookmark-regular.svg';
+import { ReactComponent as BookmarkS } from '../images/bookmark-solid.svg';
 
 import MapBox from '../Components/MapBox';
+import Loading from '../Components/Loading';
 
 const EventShow = (props) => {
-  let content = <p>No Data Found</p>;
+  let content = <Loading />;
   let showEvent = null;
   if (props.events.length > 0) {
     showEvent =
@@ -69,7 +70,7 @@ const EventShow = (props) => {
         <div className='description-box'>
           <p>{description}</p>
         </div>
-        <MapBox lat={lat} long={lon} />
+        {lat && lon && <MapBox lat={lat} long={lon} />}
       </section>
     );
   }
@@ -86,7 +87,7 @@ const EventShow = (props) => {
             onClick={() => {
               props.saveEvent(showEvent, props.user._id);
             }}>
-            <BookmarkR />
+            <BookmarkS />
           </button>
         )}
       </header>

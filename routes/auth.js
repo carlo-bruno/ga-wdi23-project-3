@@ -6,12 +6,6 @@ const User = require('../models/user');
 
 //route for signup
 router.post('/signup', (req, res) => {
-  // see if email is already in db
-  //- if found, return error
-  //- if no, create user
-  //-- sign token
-  //-- return token
-
   User.findOne({ email: req.body.email }, (err, user) => {
     if (user) {
       res.json({ type: 'error', message: 'Email already exist' });
@@ -50,12 +44,6 @@ router.post('/signup', (req, res) => {
 
 //route for login
 router.post('/login', (req, res) => {
-  // find user in db
-  //- if no, return error
-  //- if user, check authenticated()
-  //-- if authenticated, sign a token
-  //-- return the token
-
   User.findOne({ email: req.body.email }, (err, user) => {
     if (!user) {
       res.json({ type: 'error', message: 'Account not found.' });
@@ -84,15 +72,6 @@ router.post('/login', (req, res) => {
 
 //route for token validation
 router.post('/me/from/token', (req, res) => {
-  // make sure they sent us a token to check
-  // if no token, return error
-  // if token, verify
-  // if invalid, retunr error
-  // if token valid
-  //-- look up user in the db
-  //-- if user doesnt exist return error
-  //-- if user exist, send user back to rReact
-
   let token = req.body.token;
   if (!token) {
     res.json({

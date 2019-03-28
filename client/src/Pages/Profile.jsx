@@ -1,11 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ReactComponent as Back } from '../images/chevron-left-solid.svg';
 import { ReactComponent as Cog } from '../images/cog-solid.svg';
+import LoadingWhite from '../Components/LoadingWhite';
 
 const Profile = (props) => {
   let profile = (
-    <p style={{ marginTop: '10vh' }}>You have to be logged in.</p>
+    <>
+      <LoadingWhite />
+      <p style={{ fontSize: '1.3rem' }}>
+        You have to be logged in.
+      </p>
+    </>
   );
 
   let buttons = (
@@ -24,7 +29,7 @@ const Profile = (props) => {
       <>
         <div className='profile-img'>
           {(props.user.image && (
-            <img src={props.user.image} alt='user-image' />
+            <img src={props.user.image} alt='user' />
           )) || (
             <img
               src='http://placekitten.com/g/200/200'

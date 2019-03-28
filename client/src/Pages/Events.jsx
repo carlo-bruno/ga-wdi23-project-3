@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EventCard from '../Components/EventCard';
+import Loading from '../Components/Loading';
 
 class Events extends Component {
   constructor(props) {
@@ -77,7 +78,7 @@ class Events extends Component {
         </div>
 
         <div className='events-collection'>
-          {/* Cards of Events */}
+          {cards.length === 0 && <Loading />}
           {cards}
         </div>
       </div>
