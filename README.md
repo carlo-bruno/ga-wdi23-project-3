@@ -40,7 +40,6 @@ User Stories:
     "As a user, a map with location and directions would make my experience 
     easier and I would be more likely to go to an event on the fly"
 
-
     Additionally, although this app is catered to a person who is taking the initiative to get more involved in local   
     politics, but we also wanted a user to skip the full profile and also be able to search for local information based   
     solely on their  zip code. So User profiles are optional but will create a better user experience but an  
@@ -119,8 +118,8 @@ WireFraming, Planning and Pages & Components
     editable and/or changed with our API data. 
 
 
-![alt text](../images/IMG_5044 2.jpg "img5044");
-![alt text](../images/IMG_5045 2.jpg "img5045")
+![alt text](./screenshots/IMG_5044 2.jpg "img5044");
+![alt text](./screenshots/IMG_5045 2.jpg "img5045")
 
 
 ```bash
